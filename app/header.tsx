@@ -12,6 +12,11 @@ const Header: React.FC = ({ session }) => {
   let left = (
     <div className="left">
       <Link legacyBehavior href="/">
+        <a className="bold" data-active={isActive("/chats")}>
+          Chats
+        </a>
+      </Link>
+      <Link legacyBehavior href="/">
         <a className="bold" data-active={isActive("/")}>
           Feed
         </a>
@@ -39,48 +44,6 @@ const Header: React.FC = ({ session }) => {
   );
 
   let right = null;
-
-  if (session?.status === 'loading') {
-    left = (
-      <div className="left">
-        <Link legacyBehavior href="/">
-          <a className="bold" data-active={isActive("/")}>
-            Feed
-          </a>
-        </Link>
-        <style jsx>{`
-          .bold {
-            font-weight: bold;
-          }
-
-          a {
-            text-decoration: none;
-            color: #000;
-            display: inline-block;
-          }
-
-          .left a[data-active="true"] {
-            color: gray;
-          }
-
-          a + a {
-            margin-left: 1rem;
-          }
-        `}</style>
-      </div>
-    );
-    right = (
-      <div className="right">
-        <p>Validating session ...</p>
-        <style jsx>{`
-          .right {
-            margin-left: auto;
-          }
-        `}</style>
-      </div>
-    );
-  }
-
   if (!session) {
     right = (
       <div className="right">
@@ -115,6 +78,11 @@ const Header: React.FC = ({ session }) => {
   if (session) {
     left = (
       <div className="left">
+        <Link legacyBehavior href="/chats">
+          <a className="bold" data-active={isActive("/chats")}>
+            Chats
+          </a>
+        </Link>
         <Link legacyBehavior href="/">
           <a className="bold" data-active={isActive("/")}>
             Feed
