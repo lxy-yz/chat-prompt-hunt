@@ -5,6 +5,7 @@ import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/lib/auth';
 
 import './globals.css';
+import { ToggleTheme } from './toggle-theme';
 
 // export const metadata = {
 //   title: {
@@ -55,13 +56,16 @@ import './globals.css';
 
 const RootLayout = async ({ children }: { children: ReactNode }) => {
   const session = await getServerSession(authOptions);
+
   return (
-    <html lang="en" className="h-full bg-gray-50">
+    <html lang="en">
       <body className="h-full">
-        <Suspense>
-          <Header session={session} />
-        </Suspense>
-        <div className="lg:max-w-screen-xl mx-auto">{children}</div>
+        <ToggleTheme>
+          <Suspense>
+            <Header session={session} />
+          </Suspense>
+          <div className="lg:max-w-screen-lg mx-auto">{children}</div>
+        </ToggleTheme>
         {/* <Analytics /> */}
         {/* <Toast /> */}
       </body>

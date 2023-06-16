@@ -12,6 +12,9 @@ module.exports = {
         primary: {}
       }
     }
+  },
+  plugins: [require('daisyui')],
+  daisyui: {
+    themes: ['light', 'black', 'cupcake']
   }
-  // plugins: [require('daisyui')]
 };

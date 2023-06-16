@@ -39,7 +39,7 @@ const Header: React.FC = ({ session }) => {
   );
 
   let right = null;
-  
+
   if (session?.status === 'loading') {
     left = (
       <div className="left">
@@ -149,9 +149,9 @@ const Header: React.FC = ({ session }) => {
         <p>
           {session.user.name} ({session.user.email})
         </p>
-        <Link legacyBehavior href="/create">
+        <Link legacyBehavior href="/submit-chat">
           <button>
-            <a>New post</a>
+            <a>Submit</a>
           </button>
         </Link>
         <button onClick={() => signOut()}>
