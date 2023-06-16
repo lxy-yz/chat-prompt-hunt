@@ -1,6 +1,6 @@
 import React from "react";
 import prisma from "@/lib/prisma";
-import Post from "./post";
+import PostItem from "./post-item";
 
 const IndexPage = async () => {
   const feed = await prisma.post.findMany({
@@ -23,7 +23,7 @@ const IndexPage = async () => {
         <main>
           {feed.map((post) => (
             <div key={post.id} className="post">
-              <Post post={post} />
+              <PostItem post={post} />
             </div>
           ))}
         </main>

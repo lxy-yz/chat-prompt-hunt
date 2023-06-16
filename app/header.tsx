@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
 
-const Header: React.FC = ({ session, status }) => {
+const Header: React.FC = ({ session }) => {
   const pathname = usePathname();
   const isActive: (p: string) => boolean = (p) => p === pathname;
 
@@ -40,7 +40,7 @@ const Header: React.FC = ({ session, status }) => {
 
   let right = null;
   
-  if (status === 'loading') {
+  if (session?.status === 'loading') {
     left = (
       <div className="left">
         <Link legacyBehavior href="/">
