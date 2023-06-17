@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { ChatPrompt } from "../types";
+import Picker from "@emoji-mart/react";
+import pickerData from '@emoji-mart/data'
 
 const URL_PATTERN = /^(https?:\/\/)?chat\.openai\.com\/share\/(.*)$/i;
 
@@ -35,7 +37,7 @@ export const SubmitChatForm = ({ chat }: { chat: ChatPrompt }) => {
         title: data.title,
         description: data.description,
         url: data.url,
-        category: data.category,
+        category: emoji // data.category,
       }),
     })
     setIsSaving(false)
@@ -48,9 +50,33 @@ export const SubmitChatForm = ({ chat }: { chat: ChatPrompt }) => {
     router.refresh()
   }
 
+  const [emoji, setEmoji] = useState('🤖')
+
   return (
     <div className="max-w-lg mx-auto">
-      <form className="" onSubmit={handleSubmit(onSubmit)}>
+      <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
+        <div className="flex flex-col gap-2">
+          <label htmlFor="category" className="block text-sm font-medium text-gray-700">Topic</label>
+          <div className="dropdown">
+            <label tabIndex={0} className="btn text-3xl w-24 h-24">{emoji}</label>
+            <div tabIndex={0} className="dropdown-content">
+              <div className="mt-4">
+                {/* @ts-ignore */}
+                <Picker data={pickerData} onEmojiSelect={(selected) => setEmoji(selected.native)} />
+              </div>
+            </div>
+          </div>
+          {/* <input
+            type="text"
+            id="category"
+            className="input input-bordered w-full"
+            placeholder="e.g. GPT-4, AI Dungeon, etc."
+            {...register("category", { required: true })}
+          />
+          {errors.category?.type === 'required' && (
+            <span className="self-end text-sm text-neutral">This field is required</span>
+          )} */}
+        </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="title" className="text-sm font-medium text-gray-700">Title</label>
           <input
@@ -84,19 +110,6 @@ export const SubmitChatForm = ({ chat }: { chat: ChatPrompt }) => {
           )}
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="category" className="block text-sm font-medium text-gray-700">Topic</label>
-          <input
-            type="text"
-            id="category"
-            className="input input-bordered w-full"
-            placeholder="e.g. GPT-4, AI Dungeon, etc."
-            {...register("category", { required: true })}
-          />
-          {errors.url?.type === 'required' && (
-            <span className="self-end text-sm text-neutral">This field is required</span>
-          )}
-        </div>
-        <div className="flex flex-col gap-2">
           <label htmlFor="description" className="block text-sm font-medium text-gray-700">Description</label>
           <textarea
             id="description"
@@ -105,7 +118,7 @@ export const SubmitChatForm = ({ chat }: { chat: ChatPrompt }) => {
             className="textarea textarea-bordered w-full"
             {...register("description", { required: true })}
           ></textarea>
-          {errors.url?.type === 'required' && (
+          {errors.description?.type === 'required' && (
             <span className="self-end text-sm text-neutral">This field is required</span>
           )}
         </div>
