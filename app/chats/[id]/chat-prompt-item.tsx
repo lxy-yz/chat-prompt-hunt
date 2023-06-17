@@ -35,13 +35,13 @@ const ChatPromptItem = ({
           <div className="px-12 py-6">
             <iframe
               className="w-full rounded-lg"
-              src={'https://chat.openai.com/share/a82a7f96-42c3-406c-8e36-fb8d04364573'}
+              src={data.url}
               title="Chat Link"
               height="500px"
             ></iframe>
           </div>
         </div>
-        <div className="flex-1">
+        <div className="flex-1 pr-8">
           <Link href="/chats" className="inline-flex items-center space-x-3">
             <ChevronLeftIcon className="w-5 h-5 font-semibold" />
             Back

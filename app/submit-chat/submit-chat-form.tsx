@@ -47,14 +47,14 @@ export const SubmitChatForm = ({ chat }: { chat: ChatPrompt }) => {
     }
 
     setToast("Success. Redirecting...")
-    router.refresh()
+    router.push(`/chats/${chat.id}`)
   }
 
   const [emoji, setEmoji] = useState('🤖')
 
   return (
     <div className="max-w-lg mx-auto">
-      <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
+      <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col gap-2">
           <label htmlFor="category" className="block text-sm font-medium text-gray-700">Topic</label>
           <div className="dropdown">
@@ -78,19 +78,6 @@ export const SubmitChatForm = ({ chat }: { chat: ChatPrompt }) => {
           )} */}
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="title" className="text-sm font-medium text-gray-700">Title</label>
-          <input
-            type="text"
-            id="title"
-            className="input input-bordered w-full"
-            placeholder="What's your chat about?"
-            {...register("title", { required: true })}
-          />
-          {errors.title?.type === 'required' && (
-            <span className="self-end text-sm text-neutral">This field is required</span>
-          )}
-        </div>
-        <div className="flex flex-col gap-2">
           <label htmlFor="url" className="text-sm font-medium text-gray-700">Chat url</label>
           <input
             type="url"
@@ -110,6 +97,19 @@ export const SubmitChatForm = ({ chat }: { chat: ChatPrompt }) => {
           )}
         </div>
         <div className="flex flex-col gap-2">
+          <label htmlFor="title" className="text-sm font-medium text-gray-700">Title</label>
+          <input
+            type="text"
+            id="title"
+            className="input input-bordered w-full"
+            placeholder="What's your chat about?"
+            {...register("title", { required: true })}
+          />
+          {errors.title?.type === 'required' && (
+            <span className="self-end text-sm text-neutral">This field is required</span>
+          )}
+        </div>
+        <div className="flex flex-col gap-2">
           <label htmlFor="description" className="block text-sm font-medium text-gray-700">Description</label>
           <textarea
             id="description"
@@ -123,7 +123,7 @@ export const SubmitChatForm = ({ chat }: { chat: ChatPrompt }) => {
           )}
         </div>
         <div>
-          <button disabled={isSaving} type="submit" className="btn btn-primary">Submit</button>
+          <button disabled={isSaving} type="submit" className="capitalize btn btn-primary">Submit</button>
         </div>
       </form>
       {toast && (

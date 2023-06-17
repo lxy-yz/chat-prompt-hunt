@@ -2,7 +2,7 @@ import React from "react";
 import prisma from "@/lib/prisma";
 import ChatPromptItem from "./chat-prompt-item";
 
-const IndexPage = async () => {
+const ChatsPage = async () => {
   const chats = await prisma.chatPrompt.findMany({
     include: {
       user: {
@@ -19,10 +19,10 @@ const IndexPage = async () => {
     <>
       <div className="page">
         <h1>Chats</h1>
-        <main className="flex gap-4">
+        <main className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {[...chats, ...chats].map((chat, index) => {
             return (
-              <div key={chat.id} className="">
+              <div key={chat.id} className="mx-auto max-w-[320px] w-full h-full">
                 <ChatPromptItem data={chat} />
               </div>
             )
@@ -33,4 +33,4 @@ const IndexPage = async () => {
   );
 };
 
-export default IndexPage;
+export default ChatsPage;

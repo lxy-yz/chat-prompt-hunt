@@ -9,8 +9,8 @@ const ChatPromptItem = ({ data }: { data: ChatPrompt }) => {
 
   return (
     <Link href={`/chats/${data.id}`}>
-      <div className="card w-[300px] rounded bg-base-100 shadow-xl">
-        <figure className="h-[200px] bg-slate-300">
+      <div className="h-full card rounded bg-base-100 shadow-xl">
+        <figure className="h-[180px] bg-slate-300">
           {/* <iframe
             className="w-full h-[500px] overflow-hidden"
             src={'https://chat.openai.com/share/a82a7f96-42c3-406c-8e36-fb8d04364573'}

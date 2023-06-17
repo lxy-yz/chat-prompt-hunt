@@ -6,6 +6,7 @@ import { authOptions } from '@/lib/auth';
 
 import './globals.css';
 import { ToggleTheme } from './toggle-theme';
+import Footer from './footer';
 
 // export const metadata = {
 //   title: {
@@ -63,8 +64,9 @@ const RootLayout = async ({ children }: { children: ReactNode }) => {
         <ToggleTheme>
           <Suspense>
             <Header session={session} />
+            <div className="lg:max-w-screen-lg mx-auto">{children}</div>
+            <Footer />
           </Suspense>
-          <div className="lg:max-w-screen-lg mx-auto">{children}</div>
         </ToggleTheme>
         {/* <Analytics /> */}
         {/* <Toast /> */}
