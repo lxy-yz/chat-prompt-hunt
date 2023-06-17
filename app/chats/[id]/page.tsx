@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import PostItem from "../../p/[id]/post-item";
 import { getServerSession } from "next-auth";
 import { authOptions, getSession } from "@/lib/auth";
+import ChatPromptItem from "./chat-prompt-item";
 
 const Post = async ({ params }: {
   params: {
@@ -26,36 +27,15 @@ const Post = async ({ params }: {
 
   const session = await getSession();
   const userHasValidSession = Boolean(session);
-  const postBelongsToUser = session?.user?.email === chat?.user?.email;
+  const belongsToUser = session?.user?.email === chat?.user?.email;
 
   return (
     <>
-      <PostItem
-        post={chat}
-        postBelongsToUser={postBelongsToUser}
+      <ChatPromptItem
+        data={chat}
+        belongsToUser={belongsToUser}
         userHasValidSession={userHasValidSession}
       />
-      {/* <style jsx>{`
-        .page {
-          background: white;
-          padding: 2rem;
-        }
-
-        .actions {
-          margin-top: 2rem;
-        }
-
-        button {
-          background: #ececec;
-          border: 0;
-          border-radius: 0.125rem;
-          padding: 1rem 2rem;
-        }
-
-        button + button {
-          margin-left: 1rem;
-        }
-      `}</style> */}
     </>
   );
 };

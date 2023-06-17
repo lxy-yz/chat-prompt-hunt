@@ -15,7 +15,7 @@ export type ChatPrompt = {
   description: string;
   url: string;
   category: string;
-  author: {
+  user: {
     name: string;
     email: string;
   } | null;
