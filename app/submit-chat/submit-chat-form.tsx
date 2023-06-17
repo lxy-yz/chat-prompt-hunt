@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { ChatPrompt } from "../types";
 
+const URL_PATTERN = /^(https?:\/\/)?chat\.openai\.com\/share\/(.*)$/i;
+
 export const SubmitChatForm = ({ chat }: { chat: ChatPrompt }) => {
   const router = useRouter()
 
@@ -48,50 +50,64 @@ export const SubmitChatForm = ({ chat }: { chat: ChatPrompt }) => {
 
   return (
     <div className="max-w-lg mx-auto">
-      <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <label htmlFor="title" className="block text-sm font-medium text-gray-700">Title</label>
-          <div className="mt-1">
-            <input
-              type="text"
-              id="title"
-              className="input input-bordered w-full"
-              {...register("title", { required: true })}
-            />
-          </div>
+      <form className="" onSubmit={handleSubmit(onSubmit)}>
+        <div className="flex flex-col gap-2">
+          <label htmlFor="title" className="text-sm font-medium text-gray-700">Title</label>
+          <input
+            type="text"
+            id="title"
+            className="input input-bordered w-full"
+            placeholder="What's your chat about?"
+            {...register("title", { required: true })}
+          />
+          {errors.title?.type === 'required' && (
+            <span className="self-end text-sm text-neutral">This field is required</span>
+          )}
         </div>
-        <div>
-          <label htmlFor="url" className="block text-sm font-medium text-gray-700">URL</label>
-          <div className="mt-1">
-            <input
-              type="text"
-              id="url"
-              className="input input-bordered w-full"
-              {...register("url", { required: true })}
-            />
-          </div>
+        <div className="flex flex-col gap-2">
+          <label htmlFor="url" className="text-sm font-medium text-gray-700">Chat url</label>
+          <input
+            type="url"
+            id="url"
+            className="input input-bordered w-full"
+            placeholder="e.g. https://chat.openai.com/share/123456789"
+            {...register("url", {
+              required: true,
+              pattern: URL_PATTERN,
+            })}
+          />
+          {errors.url?.type === 'required' && (
+            <span className="self-end text-sm text-neutral">This field is required</span>
+          )}
+          {errors.url?.type === 'pattern' && (
+            <span className="self-end text-sm text-neutral">Invalid chat sharing url</span>
+          )}
         </div>
-        <div>
-          <label htmlFor="category" className="block text-sm font-medium text-gray-700">Category</label>
-          <div className="mt-1">
-            <input
-              type="text"
-              id="category"
-              className="input input-bordered w-full"
-              {...register("category", { required: true })}
-            />
-          </div>
+        <div className="flex flex-col gap-2">
+          <label htmlFor="category" className="block text-sm font-medium text-gray-700">Topic</label>
+          <input
+            type="text"
+            id="category"
+            className="input input-bordered w-full"
+            placeholder="e.g. GPT-4, AI Dungeon, etc."
+            {...register("category", { required: true })}
+          />
+          {errors.url?.type === 'required' && (
+            <span className="self-end text-sm text-neutral">This field is required</span>
+          )}
         </div>
-        <div>
+        <div className="flex flex-col gap-2">
           <label htmlFor="description" className="block text-sm font-medium text-gray-700">Description</label>
-          <div className="mt-1">
-            <textarea
-              id="description"
-              rows={3}
-              className="textarea textarea-bordered w-full"
-              {...register("description", { required: true })}
-            ></textarea>
-          </div>
+          <textarea
+            id="description"
+            placeholder="Describe your chat prompt here"
+            rows={5}
+            className="textarea textarea-bordered w-full"
+            {...register("description", { required: true })}
+          ></textarea>
+          {errors.url?.type === 'required' && (
+            <span className="self-end text-sm text-neutral">This field is required</span>
+          )}
         </div>
         <div>
           <button disabled={isSaving} type="submit" className="btn btn-primary">Submit</button>

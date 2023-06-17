@@ -34,13 +34,15 @@ const PostItem = ({
   return (
     <>
       <div className="flex">
-        <div className="w-[600px] order-last">
-          <iframe
-            src={'https://chat.openai.com/share/a82a7f96-42c3-406c-8e36-fb8d04364573'}
-            title="Chat Link"
-            width="100%"
-            height="500px"
-          ></iframe>
+        <div className="w-[600px] border-l border-l-gray-300 order-last">
+          <div className="px-12 py-6">
+            <iframe
+              className="w-full rounded-lg"
+              src={'https://chat.openai.com/share/a82a7f96-42c3-406c-8e36-fb8d04364573'}
+              title="Chat Link"
+              height="500px"
+            ></iframe>
+          </div>
         </div>
         <div className="flex-1">
           <h2>{title}</h2>
