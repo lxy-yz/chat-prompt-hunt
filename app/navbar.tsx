@@ -16,10 +16,10 @@ const Navbar: React.FC = () => {
 
   return (
     <div className="px-8 py-4 navbar flex-col md:flex-row bg-base-100">
-      <div className="navbar-start flex-1 flex flex-col md:flex-row md:gap-4">
+      <div className="navbar-start flex-1 flex flex-col gap-3 md:flex-row md:gap-4">
         <Link legacyBehavior href="/">
           <a className="btn" data-active={isActive("/")}>
-            🛖 Home
+            🛖
           </a>
         </Link>
         <Link legacyBehavior href="/discover">
@@ -28,13 +28,13 @@ const Navbar: React.FC = () => {
           </a>
         </Link>
       </div>
-      <div className="navbar-center">
+      {/* <div className="navbar-center">
         <button className="btn text-lg" onClick={() => toggle()}>
           💡
         </button>
-      </div>
+      </div> */}
       <div className="navbar-end flex-none">
-        <ul className="menu menu-horizontal px-1">
+        <ul className="mx-auto md:mx-0 menu menu-horizontal px-1">
           <li>
             <Link legacyBehavior href="/submit-chat">
               <a className="" data-active={isActive("/submit-chat")}>

@@ -10,8 +10,8 @@ const ChatPromptItem = ({ data }: { data: ChatPrompt }) => {
   return (
     <Link href={`/chats/${data.id}`}>
       <div className="h-full card glass">
-        <div className="flex-row md:flex-col gap-4 card-body">
-          <div className="flex justify-between">
+        <div className="flex-col gap-4 card-body">
+          <div className="flex justify-between gap-2">
             <div className="">
               <h2 className="text-sm capitalize card-title">{data.title}</h2>
               <div className="mt-2 space-x-2">

@@ -38,29 +38,23 @@ export default function Page() {
             className="absolute left-[calc(50%-4rem)] top-10 -z-10 transform-gpu blur-3xl sm:left-[calc(50%-18rem)] lg:left-48 lg:top-[calc(50%-30rem)] xl:left-[calc(50%-24rem)]"
             aria-hidden="true"
           >
-            <div
+            {/* <div
               className="aspect-[1108/632] w-[69.25rem] bg-gradient-to-r from-[#80caff] to-[#4f46e5] opacity-20"
               style={{
                 clipPath:
                   "polygon(73.6% 51.7%, 91.7% 11.8%, 100% 46.4%, 97.4% 82.2%, 92.5% 84.9%, 75.7% 64%, 55.3% 47.5%, 46.5% 49.4%, 45% 62.9%, 50.3% 87.2%, 21.3% 64.1%, 0.1% 100%, 5.4% 51.1%, 21.4% 63.9%, 58.9% 0.2%, 73.6% 51.7%)"
               }}
-            />
+            /> */}
           </div>
-          <div className="px-6 pt-10 pb-24 mx-auto max-w-7xl sm:pb-40 lg:px-8 lg:pt-40">
+          <div className="px-6 py-10 mx-auto max-w-7xl lg:px-8">
             <div className="max-w-3xl mx-auto text-center lg:pt-8">
-              <h1 className="mt-10 text-4xl font-bold tracking-tight  sm:text-6xl">
-                Discover
-                <br />
-                Curate
-                <br />
-                Share
-                <br />
-                ChatGPT prompts
+              <h1 className="capitalize mt-10 text-4xl font-bold tracking-tight  sm:text-6xl">
+                ChatGPT prompts hub
               </h1>
-              <p className="mt-6 text-lg font-medium leading-8 text-gray-300">
+              <p className="mt-4 text-lg font-medium leading-8 text-gray-700">
                 Discover, curate and share ChatGPT prompts all in one place.
               </p>
-              <button className="mt-6 btn btn-primary">
+              <button className="my-8 btn btn-primary capitalize bg-indigo-600 text-white px-10 py-4 hover:bg-indigo-700">
                 <Link href="/discover">
                   Start Discovering
                 </Link>
@@ -68,13 +62,14 @@ export default function Page() {
             </div>
           </div>
         </div>
+        <div className="mb-12 h-[500px] bg-center bg-[url(https://images.unsplash.com/photo-1675865254433-6ba341f0f00b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80)] bg-cover"></div>
         <div className="px-6 mx-auto mt-32 max-w-7xl sm:mt-0 lg:px-8">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-base font-semibold leading-7 text-indigo-400">
+            <h2 className="text-base font-semibold leading-7 text-gray-700">
               Promoting text content matters
             </h2>
             <p className="mt-2 text-3xl font-bold tracking-tight  sm:text-4xl">
-              Everything you need to spread your content
+              Learning AI and become better together.
             </p>
           </div>
           <div className="max-w-2xl mx-auto mt-16 sm:mt-20 lg:mt-24 lg:max-w-none">
@@ -87,7 +82,7 @@ export default function Page() {
                       fill="none"
                       viewBox="0 0 24 24"
                       strokeWidth="1.5"
-                      stroke="currentColor"
+                      stroke="white"
                       aria-hidden="true"
                       className="w-6 h-6 "
                     >
@@ -100,7 +95,7 @@ export default function Page() {
                   </div>
                   Discover
                 </dt>
-                <dd className="flex flex-col flex-auto mt-1 text-base leading-7 text-gray-300">
+                <dd className="flex flex-col flex-auto mt-1 text-base leading-7 text-gray-700">
                   <p className="flex-auto">
                     Discover interesting ChatGPT prompts from the community.
                   </p>
@@ -114,7 +109,7 @@ export default function Page() {
                       fill="none"
                       viewBox="0 0 24 24"
                       strokeWidth="1.5"
-                      stroke="currentColor"
+                      stroke="white"
                       aria-hidden="true"
                       className="w-6 h-6 "
                     >
@@ -127,7 +122,7 @@ export default function Page() {
                   </div>
                   Curate
                 </dt>
-                <dd className="flex flex-col flex-auto mt-1 text-base leading-7 text-gray-300">
+                <dd className="flex flex-col flex-auto mt-1 text-base leading-7 text-gray-700">
                   <p className="flex-auto">
                     Curate ChatGPT prompts that reasonate with you.
                   </p>
@@ -135,13 +130,13 @@ export default function Page() {
               </div>
               <div className="flex flex-col">
                 <dt className="text-base font-semibold leading-7 ">
-                  <div className="flex items-center justify-center w-10 h-10 mb-6 bg-indigo-500 rounded-lg">
+                  <div className="flex items-center justify-center w-10 h-10 mb-6 bg-indigo-600 rounded-lg">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
                       strokeWidth="1.5"
-                      stroke="currentColor"
+                      stroke="white"
                       aria-hidden="true"
                       className="w-6 h-6 "
                     >
@@ -154,7 +149,7 @@ export default function Page() {
                   </div>
                   Share
                 </dt>
-                <dd className="flex flex-col flex-auto mt-1 text-base leading-7 text-gray-300">
+                <dd className="flex flex-col flex-auto mt-1 text-base leading-7 text-gray-700">
                   <p className="flex-auto">
                     Share your amazing ChatGPT prompts to the community.
                   </p>
