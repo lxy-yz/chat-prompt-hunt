@@ -101,6 +101,11 @@ const Navbar: React.FC = () => {
       </div>
       {navbarOpen && (
         <div className="py-6 font-semibold flex flex-col items-center gap-4 md:hidden">
+          <Link legacyBehavior href="/">
+            <a className="" data-active={isActive("/")}>
+              🛖 Home
+            </a>
+          </Link>
           <Link legacyBehavior href="/discover">
             <a className="" data-active={isActive("/discover")}>
               🪐 Discover

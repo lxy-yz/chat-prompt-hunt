@@ -10,7 +10,7 @@ const SubmitChat = async () => {
 
   return (
     <>
-      <div className="mt-10">
+      <div className="pt-20">
         <h1 className="text-center text-3xl font-semibold">
           Tell us a bit more about this chat prompt
         </h1>

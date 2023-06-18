@@ -151,7 +151,7 @@ export default function Page() {
                 </dt>
                 <dd className="flex flex-col flex-auto mt-1 text-base leading-7 text-gray-500">
                   <p className="flex-auto">
-                    Share your amazing ChatGPT prompts to the community.
+                    Share your amazing ChatGPT prompts with the community.
                   </p>
                 </dd>
               </div>
