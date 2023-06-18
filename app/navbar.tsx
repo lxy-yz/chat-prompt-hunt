@@ -16,7 +16,7 @@ const Navbar: React.FC = () => {
 
   return (
     <div className="px-8 py-4 navbar flex-col md:flex-row bg-base-100">
-      <div className="navbar-start flex-1 flex flex-col gap-3 md:flex-row md:gap-4">
+      <div className="navbar-start flex-1 flex flex-col gap-2 md:flex-row md:gap-4">
         <Link legacyBehavior href="/">
           <a className="btn" data-active={isActive("/")}>
             🛖
@@ -27,6 +27,11 @@ const Navbar: React.FC = () => {
             🪐 Discover
           </a>
         </Link>
+        <Link legacyBehavior href="/submit-chat">
+          <a className="md:hidden" data-active={isActive("/submit-chat")}>
+            📝 Submit
+          </a>
+        </Link>
       </div>
       {/* <div className="navbar-center">
         <button className="btn text-lg" onClick={() => toggle()}>
@@ -34,10 +39,10 @@ const Navbar: React.FC = () => {
         </button>
       </div> */}
       <div className="navbar-end flex-none">
-        <ul className="mx-auto md:mx-0 menu menu-horizontal px-1">
+        <ul className="menu menu-horizontal px-1">
           <li>
             <Link legacyBehavior href="/submit-chat">
-              <a className="" data-active={isActive("/submit-chat")}>
+              <a className="hidden md:inline" data-active={isActive("/submit-chat")}>
                 📝 Submit
               </a>
             </Link>

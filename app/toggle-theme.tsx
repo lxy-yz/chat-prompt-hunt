@@ -5,9 +5,9 @@ import { useDarkMode } from 'usehooks-ts';
 
 export const ToggleTheme = ({ children }: { children: ReactNode }) => {
   const { isDarkMode } = useDarkMode(true);
-  // const theme = isDarkMode ? 'dark' : 'light';
+  // const theme = isDarkMode ? 'black' : 'cupcake';
   return (
-    <div className="min-h-screen" data-theme={'dark'}>
+    <div className="min-h-screen" data-theme={'black'}>
       {children}
     </div>
   );
