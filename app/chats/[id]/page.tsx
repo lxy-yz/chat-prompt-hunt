@@ -28,10 +28,10 @@ const Post = async ({ params }: {
   if (!chat) return 'No chat found'
 
   return (
-    <>
+    <div className="pt-20">
       <ChatPromptItem data={chat} />
       <Comments />
-    </>
+    </div>
   );
 };
 
