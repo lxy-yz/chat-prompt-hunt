@@ -10,10 +10,13 @@ const ChatsPage = async ({
     q?: string
   }
 }) => {
+  console.log('searchParams', searchParams);
+
   const chats = await prisma.chatPrompt.findMany({
     where: {
       title: {
         contains: searchParams.q,
+        mode: 'insensitive',
       }
     },
     include: {
