@@ -60,18 +60,20 @@ const RootLayout = async ({ children }: { children: ReactNode }) => {
 
   return (
     <html lang="en">
-      <body className="h-full">
+      <body className="min-h-screen">
         <ToggleTheme>
           <Suspense>
             <Header session={session} />
-            <div className="lg:max-w-screen-lg mx-auto">{children}</div>
+            <div className="px-4 lg:max-w-screen-lg mx-auto">
+              {children}
+            </div>
             <Footer />
           </Suspense>
         </ToggleTheme>
         {/* <Analytics /> */}
         {/* <Toast /> */}
-      </body>
-    </html>
+      </body >
+    </html >
   );
 };
 

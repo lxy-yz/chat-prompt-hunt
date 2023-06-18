@@ -14,9 +14,13 @@ export type ChatPrompt = {
   title: string;
   description: string;
   url: string;
-  category: string;
-  user: {
-    name: string;
-    email: string;
-  } | null;
+  topic: string[];
+  createdAt: Date;
+  upvotedBy: User[] | null;
+  submittedBy: User[] | null;
+};
+
+type User = {
+  email: string;
+  name: string;
 };

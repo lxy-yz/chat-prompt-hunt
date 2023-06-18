@@ -8,14 +8,20 @@ datasource db {
 }
 
 model ChatPrompt {
-  id          String  @id @default(cuid())
+  id          String   @id @default(cuid())
   title       String
   url         String
   description String
-  category    String
-  published   Boolean @default(false)
-  user        User?   @relation(fields: [userId], references: [id])
-  userId      String?
+  topic       String[]
+
+  submittedBy   User?   @relation(fields: [submittedById], references: [id])
+  submittedById String? @map("user_id")
+  upvotedBy     User[]  @relation("upvotes")
+
+  createdAt DateTime  @default(now()) @map(name: "created_at")
+  updatedAt DateTime? @updatedAt @map(name: "updated_at")
+
+  @@map("chatprompts")
 }
 
 model Post {
@@ -60,17 +66,18 @@ model Session {
 }
 
 model User {
-  id            String       @id @default(cuid())
-  name          String?
-  email         String?      @unique
-  emailVerified DateTime?    @map("email_verified")
-  image         String?
-  createdAt     DateTime     @default(now()) @map(name: "created_at")
-  updatedAt     DateTime     @updatedAt @map(name: "updated_at")
-  posts         Post[]
-  accounts      Account[]
-  sessions      Session[]
-  chatPrompts   ChatPrompt[]
+  id               String       @id @default(cuid())
+  name             String?
+  email            String?      @unique
+  emailVerified    DateTime?    @map("email_verified")
+  image            String?
+  createdAt        DateTime     @default(now()) @map(name: "created_at")
+  updatedAt        DateTime     @updatedAt @map(name: "updated_at")
+  posts            Post[]
+  accounts         Account[]
+  sessions         Session[]
+  upvotedPrompts   ChatPrompt[] @relation("upvotes")
+  submittedPrompts ChatPrompt[]
 
   @@map(name: "users")
 }

@@ -17,8 +17,12 @@ const Post = async ({ params }: {
       id: params.id,
     },
     include: {
-      user: {
-        select: { name: true, email: true },
+      upvotedBy: true,
+      submittedBy: {
+        select: {
+          name: true,
+          email: true
+        },
       },
     },
   });
@@ -33,6 +37,7 @@ const Post = async ({ params }: {
     <>
       <ChatPromptItem
         data={chat}
+        user={session?.user}
         belongsToUser={belongsToUser}
         userHasValidSession={userHasValidSession}
       />

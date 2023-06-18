@@ -8,7 +8,7 @@ export async function POST(req: Request) {
   }
 
   const body = await req.json();
-  const { title, url, description, category } = body;
+  const { title, url, description, topic } = body;
 
   try {
     const result = await prisma.chatPrompt.create({
@@ -16,11 +16,20 @@ export async function POST(req: Request) {
         title,
         description,
         url,
-        category,
-        user: { connect: { email: session?.user?.email! } }
+        topic,
+        submittedBy: {
+          connect: {
+            email: session?.user?.email!
+          }
+        }
       }
     });
-    return new Response(JSON.stringify(result));
+    return new Response(
+      JSON.stringify({
+        success: true,
+        data: result
+      })
+    );
   } catch (error) {
     // if (error instanceof z.ZodError) {
     //   return new Response(JSON.stringify(error.issues), { status: 422 })

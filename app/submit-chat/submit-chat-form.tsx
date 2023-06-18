@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { ChatPrompt } from "../types";
 import Picker from "@emoji-mart/react";
 import pickerData from '@emoji-mart/data'
+import { XMarkIcon } from '@heroicons/react/24/outline'
 
 const URL_PATTERN = /^(https?:\/\/)?chat\.openai\.com\/share\/(.*)$/i;
 
@@ -28,7 +29,7 @@ export const SubmitChatForm = ({ chat }: { chat: ChatPrompt }) => {
   async function onSubmit(data: ChatPrompt) {
     setToast('')
     setIsSaving(true)
-    const response = await fetch(`/api/chat-prompt`, {
+    const response = await fetch(`/api/chats`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -37,7 +38,7 @@ export const SubmitChatForm = ({ chat }: { chat: ChatPrompt }) => {
         title: data.title,
         description: data.description,
         url: data.url,
-        category: emoji // data.category,
+        topic: emojis // data.topic,
       }),
     })
     setIsSaving(false)
@@ -47,33 +48,65 @@ export const SubmitChatForm = ({ chat }: { chat: ChatPrompt }) => {
     }
 
     setToast("Success. Redirecting...")
+    const chat = (await response.json()).data
     router.push(`/chats/${chat.id}`)
   }
 
-  const [emoji, setEmoji] = useState('🤖')
+  const [emojis, setEmojis] = useState(['🤖'])
 
   return (
     <div className="max-w-lg mx-auto">
       <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col gap-2">
-          <label htmlFor="category" className="block text-sm font-medium text-gray-700">Topic</label>
+          <label htmlFor="topic" className="block text-sm font-medium text-gray-700">Topic</label>
           <div className="dropdown">
-            <label tabIndex={0} className="btn text-3xl w-24 h-24">{emoji}</label>
+            <div className="flex gap-4">
+              <label tabIndex={0} className="btn text-3xl w-24 h-24">🤖
+              </label>
+              <div className="space-x-2">
+                {emojis.map((emoji) => {
+                  return (
+                    <div className="py-4 px-4 badge gap-2">
+                      <XMarkIcon
+                        className="cursor-pointer w-4 h-4"
+                        onClick={() => {
+                          setEmojis(emojis.filter((e) => e !== emoji))
+                        }}
+                      />
+                      {emoji}
+                    </div>
+                  )
+                })}
+                {emojis.length === 3 && (
+                  <span className="text-sm text-gray-500">
+                    (up to 3 topics)
+                  </span>
+                )}
+              </div>
+            </div>
             <div tabIndex={0} className="dropdown-content">
               <div className="mt-4">
                 {/* @ts-ignore */}
-                <Picker data={pickerData} onEmojiSelect={(selected) => setEmoji(selected.native)} />
+                <Picker data={pickerData} onEmojiSelect={(selected) => {
+                  if (emojis.includes(selected.native)) {
+                    return
+                  }
+                  if (emojis.length >= 3) {
+                    return
+                  }
+                  setEmojis([...emojis, selected.native])
+                }} />
               </div>
             </div>
           </div>
           {/* <input
             type="text"
-            id="category"
+            id="topic"
             className="input input-bordered w-full"
             placeholder="e.g. GPT-4, AI Dungeon, etc."
-            {...register("category", { required: true })}
+            {...register("topic", { required: true })}
           />
-          {errors.category?.type === 'required' && (
+          {errors.topic?.type === 'required' && (
             <span className="self-end text-sm text-neutral">This field is required</span>
           )} */}
         </div>
@@ -125,7 +158,7 @@ export const SubmitChatForm = ({ chat }: { chat: ChatPrompt }) => {
         <div>
           <button disabled={isSaving} type="submit" className="capitalize btn btn-primary">Submit</button>
         </div>
-      </form>
+      </form >
       {toast && (
         <div className="toast">
           <div className="alert alert-info">
@@ -133,6 +166,6 @@ export const SubmitChatForm = ({ chat }: { chat: ChatPrompt }) => {
           </div>
         </div>
       )}
-    </div>
+    </div >
   );
 };
