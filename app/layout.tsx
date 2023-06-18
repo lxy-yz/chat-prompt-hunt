@@ -62,7 +62,7 @@ const RootLayout = async ({ children }: { children: ReactNode }) => {
 
   return (
     <html lang="en">
-      <body className="min-h-screen">
+      <body className="">
         <SessionProvider session={session}>
           <ToggleTheme>
             <Navbar />

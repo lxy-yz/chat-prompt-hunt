@@ -16,12 +16,13 @@ export type ChatPrompt = {
   url: string;
   topic: string[];
   createdAt: Date;
-  upvotedBy: User[] | null;
-  savedBy: User[] | null;
-  submittedBy: User | null;
+  upvotedBy?: User[] | null;
+  savedBy?: User[] | null;
+  submittedBy?: User | null;
 };
 
 export interface User {
   email: string;
   name: string;
+  image?: string;
 }

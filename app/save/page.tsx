@@ -33,8 +33,7 @@ const ChatsPage = async ({
 
   return (
     <>
-      <div className="">
-        {/* TODO: */}
+      <div className="h-full">
         <div className="mt-[80px] flex gap-4">
           <main className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {[...chats].map((chat, index) => {

@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react";
-import Link from "next/link";
 import { ChevronLeftIcon } from '@heroicons/react/24/solid'
 import { StarIcon, HandThumbUpIcon } from '@heroicons/react/24/outline'
 import { useSession } from "next-auth/react"
@@ -108,6 +107,25 @@ const ChatPromptItem = ({
               <tr>
                 <td>By</td>
                 <td className="text-right">{data.submittedBy?.name || 'N/A'}</td>
+              </tr>
+              <tr>
+                <td>Upvotes</td>
+                <td className="flex justify-end">
+                  <div className="avatar-group -space-x-6">
+                    {data.upvotedBy?.slice(0, 3).map(e => (
+                      <div className="avatar">
+                        <div className="w-12">
+                          <img src={e.image} />
+                        </div>
+                      </div>
+                    ))}
+                    <div className="avatar placeholder">
+                      <div className="w-12 bg-neutral-focus text-neutral-content">
+                        <span>3+</span>
+                      </div>
+                    </div>
+                  </div>
+                </td>
               </tr>
             </tbody>
           </table>

@@ -4,15 +4,10 @@ import { ReactNode } from 'react';
 import { useDarkMode } from 'usehooks-ts';
 
 export const ToggleTheme = ({ children }: { children: ReactNode }) => {
-  const { isDarkMode, toggle } = useDarkMode();
+  const { isDarkMode } = useDarkMode();
 
   return (
-    <div className="h-full" data-theme={isDarkMode ? 'black' : 'cupcake'}>
-      <div className="h-10 flex justify-center items-center">
-        <button className="text-xl" onClick={() => toggle()}>
-          💡
-        </button>
-      </div>
+    <div className="h-full min-h-screen" data-theme={isDarkMode ? 'black' : 'cupcake'}>
       {children}
     </div>
   );

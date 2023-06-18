@@ -1,10 +1,5 @@
 import React from "react";
-import { useRouter } from "next/router";
 import prisma from '@/lib/prisma'
-import { useSession } from "next-auth/react";
-import PostItem from "../../p/[id]/post-item";
-import { getServerSession } from "next-auth";
-import { authOptions, getSession } from "@/lib/auth";
 import ChatPromptItem from "./chat-prompt-item";
 import { Comments } from "./comments";
 
@@ -18,12 +13,13 @@ const Post = async ({ params }: {
       id: params.id,
     },
     include: {
-      upvotedBy: { select: { email: true } },
+      upvotedBy: { select: { email: true, image: true } },
       savedBy: { select: { email: true } },
       submittedBy: {
         select: {
           name: true,
-          email: true
+          email: true,
+          image: true
         },
       },
     },

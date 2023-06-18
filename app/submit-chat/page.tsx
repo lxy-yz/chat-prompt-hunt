@@ -3,7 +3,7 @@ import { SubmitChatForm } from "./submit-chat-form";
 const SubmitChat: React.FC = () => {
   return (
     <>
-      <div>
+      <div className="mt-10">
         <h1 className="text-center text-3xl font-semibold">
           Tell us a bit more about this chat prompt
         </h1>
