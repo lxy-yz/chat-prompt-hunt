@@ -10,7 +10,7 @@ import { XMarkIcon } from '@heroicons/react/24/outline'
 
 const URL_PATTERN = /^(https?:\/\/)?chat\.openai\.com\/share\/(.*)$/i;
 
-export const SubmitChatForm = ({ chat }: { chat: ChatPrompt }) => {
+export const SubmitChatForm = ({ data }: { data?: ChatPrompt }) => {
   const router = useRouter()
 
   const {
@@ -19,7 +19,7 @@ export const SubmitChatForm = ({ chat }: { chat: ChatPrompt }) => {
     formState: { errors, },
   } = useForm<ChatPrompt>({
     defaultValues: {
-      title: chat?.title || "",
+      title: data?.title || "",
     },
   })
 

@@ -1,6 +1,13 @@
+import { getSession } from "@/lib/auth";
+import { redirect } from "next/navigation";
 import { SubmitChatForm } from "./submit-chat-form";
 
-const SubmitChat: React.FC = () => {
+const SubmitChat = async () => {
+  const session = await getSession();
+  if (!session) {
+    return redirect('/api/auth/signin')
+  }
+
   return (
     <>
       <div className="mt-10">

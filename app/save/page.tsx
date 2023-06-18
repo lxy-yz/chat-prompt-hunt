@@ -1,17 +1,15 @@
 import React from "react";
 import prisma from "@/lib/prisma";
-import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
+import { redirect } from 'next/navigation'
 import ChatPromptItem from "../chat-prompt-item";
 import { getSession } from "@/lib/auth";
 
-const ChatsPage = async ({
-  searchParams
-}: {
-  searchParams: {
-    q?: string
-  }
-}) => {
+const ChatsPage = async () => {
   const session = await getSession();
+  if (!session) {
+    return redirect('/api/auth/signin')
+  }
+
   const chats = await prisma.chatPrompt.findMany({
     where: {
       savedBy: {
