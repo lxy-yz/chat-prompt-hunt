@@ -17,6 +17,7 @@ model ChatPrompt {
   submittedBy   User?   @relation(fields: [submittedById], references: [id])
   submittedById String? @map("user_id")
   upvotedBy     User[]  @relation("upvotes")
+  savedBy       User[]  @relation("saves")
 
   createdAt DateTime  @default(now()) @map(name: "created_at")
   updatedAt DateTime? @updatedAt @map(name: "updated_at")
@@ -77,6 +78,7 @@ model User {
   accounts         Account[]
   sessions         Session[]
   upvotedPrompts   ChatPrompt[] @relation("upvotes")
+  savedPrompts     ChatPrompt[] @relation("saves")
   submittedPrompts ChatPrompt[]
 
   @@map(name: "users")

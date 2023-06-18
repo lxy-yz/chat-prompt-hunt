@@ -6,6 +6,7 @@ import PostItem from "../../p/[id]/post-item";
 import { getServerSession } from "next-auth";
 import { authOptions, getSession } from "@/lib/auth";
 import ChatPromptItem from "./chat-prompt-item";
+import { Comments } from "./comments";
 
 const Post = async ({ params }: {
   params: {
@@ -17,7 +18,8 @@ const Post = async ({ params }: {
       id: params.id,
     },
     include: {
-      upvotedBy: true,
+      upvotedBy: { select: { email: true } },
+      savedBy: { select: { email: true } },
       submittedBy: {
         select: {
           name: true,
@@ -29,18 +31,10 @@ const Post = async ({ params }: {
 
   if (!chat) return 'No chat found'
 
-  const session = await getSession();
-  const userHasValidSession = Boolean(session);
-  const belongsToUser = session?.user?.email === chat?.user?.email;
-
   return (
     <>
-      <ChatPromptItem
-        data={chat}
-        user={session?.user}
-        belongsToUser={belongsToUser}
-        userHasValidSession={userHasValidSession}
-      />
+      <ChatPromptItem data={chat} />
+      <Comments />
     </>
   );
 };

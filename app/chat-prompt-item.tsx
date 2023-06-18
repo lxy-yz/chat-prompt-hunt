@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
-import { ChatPrompt } from '../types'
+import { ChatPrompt } from './types'
 import Link from "next/link";
 
 const ChatPromptItem = ({ data }: { data: ChatPrompt }) => {
@@ -20,13 +20,13 @@ const ChatPromptItem = ({ data }: { data: ChatPrompt }) => {
         </figure>
         <div className="p-4 gap-1 card-body">
           <h2 className="text-base capitalize card-title">{data.title}</h2>
-          <p className="text-gray-700">{data.description}</p>
+          <p className="line-clamp-3  text-gray-700">{data.description}</p>
           <div className="mt-3 card-actions justify-end">
             <button className="btn btn-primary">🔺 Upvote</button>
           </div>
         </div>
       </div>
-    </Link>
+    </Link >
   );
 };
 

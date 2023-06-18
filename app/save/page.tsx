@@ -1,9 +1,25 @@
 import React from "react";
 import prisma from "@/lib/prisma";
-import ChatPromptItem from "./chat-prompt-item";
+import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
+import ChatPromptItem from "../chat-prompt-item";
+import { getSession } from "@/lib/auth";
 
-const ChatsPage = async () => {
+const ChatsPage = async ({
+  searchParams
+}: {
+  searchParams: {
+    q?: string
+  }
+}) => {
+  const session = await getSession();
   const chats = await prisma.chatPrompt.findMany({
+    where: {
+      savedBy: {
+        some: {
+          id: session?.user.id
+        }
+      }
+    },
     include: {
       submittedBy: {
         select: {
@@ -18,13 +34,8 @@ const ChatsPage = async () => {
   return (
     <>
       <div className="">
-        <h1 className="text-center text-5xl font-bold">Discover Chats</h1>
         {/* TODO: */}
-        <div className="text-center mt-6 text-xl text-gray-500">Jumpstart your app development process with our pre-built solutions.</div>
         <div className="mt-[80px] flex gap-4">
-          <div className="w-[300px] bg-neutral-200">
-
-          </div>
           <main className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {[...chats].map((chat, index) => {
               return (

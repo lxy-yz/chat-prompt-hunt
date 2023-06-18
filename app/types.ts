@@ -17,10 +17,11 @@ export type ChatPrompt = {
   topic: string[];
   createdAt: Date;
   upvotedBy: User[] | null;
-  submittedBy: User[] | null;
+  savedBy: User[] | null;
+  submittedBy: User | null;
 };
 
-type User = {
+export interface User {
   email: string;
   name: string;
-};
+}

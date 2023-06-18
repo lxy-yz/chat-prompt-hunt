@@ -1,12 +1,14 @@
 import React, { ReactNode, Suspense } from 'react';
-import Header from './header';
 
+import SessionProvider from './session-provider';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/lib/auth';
 
-import './globals.css';
 import { ToggleTheme } from './toggle-theme';
+import Navbar from './navbar';
 import Footer from './footer';
+
+import './globals.css';
 
 // export const metadata = {
 //   title: {
@@ -61,19 +63,18 @@ const RootLayout = async ({ children }: { children: ReactNode }) => {
   return (
     <html lang="en">
       <body className="min-h-screen">
-        <ToggleTheme>
-          <Suspense>
-            <Header session={session} />
+        <SessionProvider session={session}>
+          <ToggleTheme>
+            <Navbar />
             <div className="px-4 lg:max-w-screen-lg mx-auto">
               {children}
             </div>
             <Footer />
-          </Suspense>
-        </ToggleTheme>
+          </ToggleTheme>
+        </SessionProvider>
         {/* <Analytics /> */}
-        {/* <Toast /> */}
-      </body >
-    </html >
+      </body>
+    </html>
   );
 };
 

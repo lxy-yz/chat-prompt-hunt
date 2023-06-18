@@ -20,8 +20,8 @@ export async function POST(
       return new Response(null, { status: 401 });
     }
 
-    if (await hasUpvoted(params.id)) {
-      return new Response('already upvoted', { status: 422 });
+    if (await hasUnsaved(params.id)) {
+      return new Response('already unsaved', { status: 422 });
     }
 
     await prisma.chatPrompt.update({
@@ -29,8 +29,8 @@ export async function POST(
         id: params.id
       },
       data: {
-        upvotedBy: {
-          connect: {
+        savedBy: {
+          disconnect: {
             email: session.user.email
           }
         }
@@ -41,8 +41,8 @@ export async function POST(
         email: session.user.email
       },
       data: {
-        upvotedPrompts: {
-          connect: {
+        savedPrompts: {
+          disconnect: {
             id: params.id
           }
         }
@@ -52,7 +52,7 @@ export async function POST(
     return new Response(
       JSON.stringify({
         success: true,
-        message: 'upvoted'
+        message: 'unsaved'
       }),
       { status: 200 }
     );
@@ -67,12 +67,12 @@ export async function POST(
   }
 }
 
-async function hasUpvoted(id: string) {
+async function hasUnsaved(id: string) {
   const session = await getSession();
   const count = await prisma.chatPrompt.count({
     where: {
       id,
-      upvotedBy: {
+      savedBy: {
         some: {
           id: session?.user?.id
         }
@@ -80,5 +80,5 @@ async function hasUpvoted(id: string) {
     }
   });
 
-  return count > 0;
+  return count === 0;
 }

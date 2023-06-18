@@ -18,17 +18,25 @@ export async function DELETE(
   try {
     const { params } = routeContextSchema.parse(context);
 
-    if (!(await verifyCurrentUserHasAccessToPost(params.id))) {
+    if (!(await hasAccess(params.id))) {
       return new Response(null, { status: 403 });
     }
 
-    await prisma.post.delete({
+    await prisma.chatPrompt.delete({
       where: {
-        id: params.id as string
+        id: params.id
       }
     });
 
-    return new Response(null, { status: 204 });
+    return new Response(
+      JSON.stringify({
+        success: true,
+        message: 'deleted'
+      }),
+      {
+        status: 204
+      }
+    );
   } catch (error) {
     if (error instanceof z.ZodError) {
       return new Response(JSON.stringify(error.issues), { status: 422 });
@@ -72,12 +80,12 @@ export async function PATCH(
   }
 }
 
-async function verifyCurrentUserHasAccessToPost(id: string) {
+async function hasAccess(id: string) {
   const session = await getSession();
-  const count = await prisma.post.count({
+  const count = await prisma.chatPrompt.count({
     where: {
       id,
-      authorId: session?.user.id
+      submittedById: session?.user.id
     }
   });
 
