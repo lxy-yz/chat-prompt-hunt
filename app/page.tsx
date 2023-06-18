@@ -48,10 +48,10 @@ export default function Page() {
           </div>
           <div className="px-6 py-10 mx-auto max-w-7xl lg:px-8">
             <div className="max-w-3xl mx-auto text-center lg:pt-8">
-              <h1 className="capitalize mt-10 text-4xl font-bold tracking-tight  sm:text-6xl">
+              <h1 className="capitalize mt-20 text-4xl font-bold tracking-tight  sm:text-6xl">
                 ChatGPT prompts hub
               </h1>
-              <p className="mt-4 text-lg font-medium leading-8 text-gray-700">
+              <p className="mt-4 text-lg font-medium leading-8 text-gray-500">
                 Discover, curate and share ChatGPT prompts all in one place.
               </p>
               <button className="my-8 btn btn-primary capitalize bg-indigo-600 text-white px-10 py-4 hover:bg-indigo-700">
@@ -63,9 +63,9 @@ export default function Page() {
           </div>
         </div>
         <div className="mb-12 h-[500px] bg-center bg-[url(https://images.unsplash.com/photo-1675865254433-6ba341f0f00b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80)] bg-cover"></div>
-        <div className="px-6 mx-auto mt-32 max-w-7xl sm:mt-0 lg:px-8">
+        <div className="px-6 mx-auto mt-20 max-w-7xl sm:mt-0 lg:px-8">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-base font-semibold leading-7 text-gray-700">
+            <h2 className="text-base font-semibold leading-7 text-gray-500">
               Promoting text content matters
             </h2>
             <p className="mt-2 text-3xl font-bold tracking-tight  sm:text-4xl">
@@ -95,7 +95,7 @@ export default function Page() {
                   </div>
                   Discover
                 </dt>
-                <dd className="flex flex-col flex-auto mt-1 text-base leading-7 text-gray-700">
+                <dd className="flex flex-col flex-auto mt-1 text-base leading-7 text-gray-500">
                   <p className="flex-auto">
                     Discover interesting ChatGPT prompts from the community.
                   </p>
@@ -122,7 +122,7 @@ export default function Page() {
                   </div>
                   Curate
                 </dt>
-                <dd className="flex flex-col flex-auto mt-1 text-base leading-7 text-gray-700">
+                <dd className="flex flex-col flex-auto mt-1 text-base leading-7 text-gray-500">
                   <p className="flex-auto">
                     Curate ChatGPT prompts that reasonate with you.
                   </p>
@@ -149,7 +149,7 @@ export default function Page() {
                   </div>
                   Share
                 </dt>
-                <dd className="flex flex-col flex-auto mt-1 text-base leading-7 text-gray-700">
+                <dd className="flex flex-col flex-auto mt-1 text-base leading-7 text-gray-500">
                   <p className="flex-auto">
                     Share your amazing ChatGPT prompts to the community.
                   </p>
