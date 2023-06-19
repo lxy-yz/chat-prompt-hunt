@@ -6,12 +6,12 @@ import { useDarkMode } from "usehooks-ts";
 
 const Footer: React.FC = () => {
   const { toggle } = useDarkMode();
-  
+
   return (
     <footer className="mt-10 footer footer-center p-10 bg-primary text-primary-content">
       <div>
         <button className="btn text-lg" onClick={() => toggle()}>
-          💡
+          🌓
         </button>
         <p className="mt-4 text-zinc-500">
           Copyright © {new Date().getFullYear()} - All right reserved

@@ -39,12 +39,12 @@ const Navbar: React.FC = () => {
             </Link>
             <Link legacyBehavior href="/discover">
               <a className="" data-active={isActive("/discover")}>
-                🪐 Discover
+                🔮 Discover
               </a>
             </Link>
           </div>
           <div className="navbar-center">
-            
+
           </div>
           <div className="navbar-end flex-none">
             <ul className="menu menu-horizontal px-1">
