@@ -14,7 +14,7 @@ export const Sorting = () => {
       <select
         ref={orderRef}
         defaultValue={searchParams.get('sort') || 'recents'}
-        className="select select-bordered select-sm w-full max-w-xs"
+        className="select select-bordered select-sm md:w-full max-w-xs"
         onChange={() => {
           if (!orderRef.current) return
           const newSearchParams = new URLSearchParams(searchParams)

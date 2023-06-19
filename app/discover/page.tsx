@@ -52,7 +52,7 @@ const DiscoverChatsPage = async ({
             </div>
           </form>
         </div>
-        <div className="mt-[80px]">
+        <div className="mt-10 md:mt-[80px]">
           <Sorting />
           <main className="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {[...chats].map((chat, index) => {
