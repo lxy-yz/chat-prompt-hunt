@@ -58,7 +58,7 @@ const ChatPromptItem = ({
       fetch(`/api/chats/${id}`, {
         method: "DELETE",
       })
-      router.push('/chats')
+      router.push('/')
     }
   }
 
