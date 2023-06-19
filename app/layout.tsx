@@ -1,4 +1,5 @@
-import React, { ReactNode, Suspense } from 'react';
+import React, { ReactNode } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 
 import SessionProvider from './session-provider';
 import { getServerSession } from 'next-auth/next';
@@ -66,7 +67,7 @@ const RootLayout = async ({ children }: { children: ReactNode }) => {
             <Footer />
           </ToggleTheme>
         </SessionProvider>
-        {/* <Analytics /> */}
+        <Analytics />
       </body>
     </html>
   );
