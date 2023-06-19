@@ -2,8 +2,11 @@
 
 import React from "react";
 import { InboxIcon, GlobeAltIcon, } from '@heroicons/react/24/solid'
+import { useDarkMode } from "usehooks-ts";
 
 const Footer: React.FC = () => {
+  const { toggle } = useDarkMode();
+  
   return (
     <footer className="mt-10 footer footer-center p-10 bg-primary text-primary-content">
       <div>
