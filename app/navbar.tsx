@@ -72,17 +72,19 @@ const Navbar: React.FC = () => {
               {session && (
                 <li>
                   <details>
-                    <summary>
+                    <summary className="max-w-[150px] truncate">
                       📧 {session?.user.email}
                     </summary>
                     <ul className="w-full p-2 bg-base-100">
-                      {/* <li>
-                    <Link legacyBehavior href="/profile">
-                      <a className="" data-active={isActive("/save")}>
-                        🦄 Profile
-                      </a>
-                    </Link>
-                  </li> */}
+                      {/* 
+                        <li>
+                          <Link legacyBehavior href="/profile">
+                            <a className="" data-active={isActive("/save")}>
+                              🦄 Profile
+                            </a>
+                          </Link>
+                        </li> 
+                      */}
                       <li>
                         <Link legacyBehavior href=''>
                           <a onClick={() => signOut()} data-active={isActive("/save")}>
@@ -101,21 +103,34 @@ const Navbar: React.FC = () => {
       </div>
       {navbarOpen && (
         <div className="py-6 font-semibold flex flex-col items-center gap-4 md:hidden">
-          <Link legacyBehavior href="/">
-            <a className="" data-active={isActive("/")}>
-              🛖 Home
+          {!session && (
+            <Link legacyBehavior href="/">
+              <a className="" data-active={isActive("/")}>
+                🛖
+                <span className="inline-block ml-2">Home</span>
+              </a>
+            </Link>
+          )}
+          <Link legacyBehavior href="/submit-chat">
+            <a className="" data-active={isActive("/submit-chat")}>
+              📝
+              <span className="inline-block ml-2">Submit</span>
             </a>
           </Link>
           <Link legacyBehavior href="/discover">
             <a className="" data-active={isActive("/discover")}>
-              🪐 Discover
+              🪐
+              <span className="inline-block ml-2">Discover</span>
             </a>
           </Link>
-          <Link legacyBehavior href="/submit-chat">
-            <a className="" data-active={isActive("/submit-chat")}>
-              📝 Submit
-            </a>
-          </Link>
+          {session && (
+            <Link legacyBehavior href=''>
+              <a onClick={() => signOut()} data-active={isActive("/save")}>
+                🚪
+                Logout
+              </a>
+            </Link>
+          )}
         </div>
       )}
     </>

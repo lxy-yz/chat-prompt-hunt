@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react";
-import { InboxIcon, GlobeAltIcon } from '@heroicons/react/24/solid'
+import { InboxIcon, GlobeAltIcon, } from '@heroicons/react/24/solid'
 
 const Footer: React.FC = () => {
   return (
