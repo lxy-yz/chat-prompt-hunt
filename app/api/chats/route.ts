@@ -1,5 +1,7 @@
+import { v4 as uuid } from 'uuid';
 import { getSession } from '@/lib/auth';
 import prisma from '@/lib/prisma';
+import slugify from 'slugify';
 
 export async function POST(req: Request) {
   const session = await getSession();
@@ -10,10 +12,22 @@ export async function POST(req: Request) {
   const body = await req.json();
   const { title, url, description, topic } = body;
 
+  let slug = slugify(title, { lower: true });
+  const existingPost = await prisma.chatPrompt.findUnique({
+    where: {
+      slug
+    }
+  });
+  if (existingPost) {
+    const uniqueId = uuid().slice(0, 4);
+    slug += `-${uniqueId}`;
+  }
+
   try {
     const result = await prisma.chatPrompt.create({
       data: {
         title,
+        slug,
         description,
         url,
         topic,

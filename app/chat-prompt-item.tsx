@@ -1,14 +1,13 @@
 "use client"
 
 import React from "react";
-import { useRouter } from "next/navigation";
 import { ChatPrompt } from './types'
 import Link from "next/link";
 
 const ChatPromptItem = ({ data }: { data: ChatPrompt }) => {
 
   return (
-    <Link href={`/chats/${data.id}`}>
+    <Link href={`/chats/${data.slug}`}>
       <div className="h-full card glass">
         <div className="flex-col gap-4 card-body">
           <div className="flex justify-between gap-2">
@@ -33,7 +32,7 @@ const ChatPromptItem = ({ data }: { data: ChatPrompt }) => {
           <p className="mt-4 text-sm line-clamp-3  text-neutral-500">{data.description}</p>
         </div>
       </div>
-    </Link >
+    </Link>
   );
 };
 

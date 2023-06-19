@@ -49,7 +49,7 @@ export const SubmitChatForm = ({ data }: { data?: ChatPrompt }) => {
 
     setToast("Success. Redirecting...")
     const chat = (await response.json()).data
-    router.push(`/chats/${chat.id}`)
+    router.push(`/chats/${chat.slug}`)
   }
 
   const [emojis, setEmojis] = useState(['🤖'])

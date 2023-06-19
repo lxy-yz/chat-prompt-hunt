@@ -5,12 +5,12 @@ import { Comments } from "./comments";
 
 const ChatDetailsPage = async ({ params }: {
   params: {
-    id: string
+    slug: string
   }
 }) => {
   const chat = await prisma.chatPrompt.findUnique({
     where: {
-      id: params.id,
+      slug: params.slug,
     },
     include: {
       upvotedBy: { select: { email: true, image: true } },

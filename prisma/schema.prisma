@@ -8,19 +8,18 @@ datasource db {
 }
 
 model ChatPrompt {
-  id          String   @id @default(cuid())
-  title       String
-  url         String
-  description String
-  topic       String[]
-
-  submittedBy   User?   @relation(fields: [submittedById], references: [id])
-  submittedById String? @map("user_id")
-  upvotedBy     User[]  @relation("upvotes")
-  savedBy       User[]  @relation("saves")
-
-  createdAt DateTime  @default(now()) @map(name: "created_at")
-  updatedAt DateTime? @updatedAt @map(name: "updated_at")
+  id            String    @id @default(cuid())
+  title         String
+  slug          String    @unique
+  url           String
+  description   String
+  topic         String[]
+  submittedById String?   @map("user_id")
+  createdAt     DateTime  @default(now()) @map("created_at")
+  updatedAt     DateTime? @updatedAt @map("updated_at")
+  submittedBy   User?     @relation(fields: [submittedById], references: [id])
+  savedBy       User[]    @relation("saves")
+  upvotedBy     User[]    @relation("upvotes")
 
   @@map("chatprompts")
 }
@@ -40,8 +39,7 @@ model Account {
   session_state      String?
   oauth_token_secret String?
   oauth_token        String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user               User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
   @@map("accounts")
@@ -63,15 +61,15 @@ model User {
   email            String?      @unique
   emailVerified    DateTime?    @map("email_verified")
   image            String?
-  createdAt        DateTime     @default(now()) @map(name: "created_at")
-  updatedAt        DateTime     @updatedAt @map(name: "updated_at")
+  createdAt        DateTime     @default(now()) @map("created_at")
+  updatedAt        DateTime     @updatedAt @map("updated_at")
   accounts         Account[]
-  sessions         Session[]
-  upvotedPrompts   ChatPrompt[] @relation("upvotes")
-  savedPrompts     ChatPrompt[] @relation("saves")
   submittedPrompts ChatPrompt[]
+  sessions         Session[]
+  savedPrompts     ChatPrompt[] @relation("saves")
+  upvotedPrompts   ChatPrompt[] @relation("upvotes")
 
-  @@map(name: "users")
+  @@map("users")
 }
 
 model VerificationToken {

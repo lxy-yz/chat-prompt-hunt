@@ -12,6 +12,7 @@ export type Post = {
 export type ChatPrompt = {
   id: string;
   title: string;
+  slug: string;
   description: string;
   url: string;
   topic: string[];

@@ -1,69 +1,37 @@
-import { PrismaClient, Prisma } from '@prisma/client'
+import { PrismaClient } from '@prisma/client';
+import slugify from 'slugify';
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
-const userData: Prisma.UserCreateInput[] = [
-  {
-    name: 'Alice',
-    email: 'alice@prisma.io',
-    posts: {
-      create: [
-        {
-          title: 'Join the Prisma Slack',
-          content: 'https://slack.prisma.io',
-          published: true,
-        },
-      ],
-    },
-  },
-  {
-    name: 'Nilu',
-    email: 'nilu@prisma.io',
-    posts: {
-      create: [
-        {
-          title: 'Follow Prisma on Twitter',
-          content: 'https://www.twitter.com/prisma',
-          published: true,
-        },
-      ],
-    },
-  },
-  {
-    name: 'Mahmoud',
-    email: 'mahmoud@prisma.io',
-    posts: {
-      create: [
-        {
-          title: 'Ask a question about Prisma on GitHub',
-          content: 'https://www.github.com/prisma/prisma/discussions',
-          published: true,
-        },
-        {
-          title: 'Prisma on YouTube',
-          content: 'https://pris.ly/youtube',
-        },
-      ],
-    },
-  },
-]
+async function seedMissedSlugData() {
+  const posts = await prisma.chatPrompt.findMany({});
+
+  for (const post of posts) {
+    const title = post.title;
+    const slug = slugify(title, { lower: true });
+
+    await prisma.chatPrompt.update({
+      where: {
+        id: post.id
+      },
+      data: {
+        slug
+      }
+    });
+  }
+}
 
 async function main() {
-  console.log(`Start seeding ...`)
-  for (const u of userData) {
-    const user = await prisma.user.create({
-      data: u,
-    })
-    console.log(`Created user with id: ${user.id}`)
-  }
-  console.log(`Seeding finished.`)
+  console.log(`Start seeding ...`);
+  await seedMissedSlugData();
+  console.log(`Seeding finished.`);
 }
 
 main()
   .catch((e) => {
-    console.error(e)
-    process.exit(1)
+    console.error(e);
+    process.exit(1);
   })
   .finally(async () => {
-    await prisma.$disconnect()
-  })
+    await prisma.$disconnect();
+  });
