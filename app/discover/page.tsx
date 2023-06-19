@@ -3,7 +3,7 @@ import prisma from "@/lib/prisma";
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 import ChatPromptItem from "../chat-prompt-item";
 
-const ChatsPage = async ({
+const DiscoverChatsPage = async ({
   searchParams
 }: {
   searchParams: {
@@ -56,4 +56,4 @@ const ChatsPage = async ({
   );
 };
 
-export default ChatsPage;
+export default DiscoverChatsPage;

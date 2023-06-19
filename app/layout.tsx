@@ -9,53 +9,47 @@ import Navbar from './navbar';
 import Footer from './footer';
 
 import './globals.css';
+import pkg from '@/package.json';
 
-// export const metadata = {
-//   title: {
-//     default: siteConfig.name,
-//     template: `%s | ${siteConfig.name}`,
-//   },
-//   description: siteConfig.description,
-//   keywords: [
-//     "Next.js",
-//     "React",
-//     "Tailwind CSS",
-//     "Server Components",
-//     "Radix UI",
-//   ],
-//   authors: [
-//     {
-//       name: "shadcn",
-//       url: "https://shadcn.com",
-//     },
-//   ],
-//   creator: "shadcn",
-//   themeColor: [
-//     { media: "(prefers-color-scheme: light)", color: "white" },
-//     { media: "(prefers-color-scheme: dark)", color: "black" },
-//   ],
-//   openGraph: {
-//     type: "website",
-//     locale: "en_US",
-//     url: siteConfig.url,
-//     title: siteConfig.name,
-//     description: siteConfig.description,
-//     siteName: siteConfig.name,
-//   },
-//   twitter: {
-//     card: "summary_large_image",
-//     title: siteConfig.name,
-//     description: siteConfig.description,
-//     images: [`${siteConfig.url}/og.jpg`],
-//     creator: "@shadcn",
-//   },
-//   icons: {
-//     icon: "/favicon.ico",
-//     shortcut: "/favicon-16x16.png",
-//     apple: "/apple-touch-icon.png",
-//   },
-//   manifest: `${siteConfig.url}/site.webmanifest`,
-// }
+export const metadata = {
+  title: {
+    default: pkg.displayName,
+  },
+  description: pkg.description,
+  keywords: pkg.keywords,
+  authors: [
+    {
+      name: "Allen",
+      url: "https://liallen.me",
+    },
+  ],
+  creator: "Allen",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
+  ],
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: pkg.url,
+    title: pkg.displayName,
+    description: pkg.description,
+    siteName: pkg.displayName,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: pkg.displayName,
+    description: pkg.description,
+    images: [`${pkg.url}/og.jpg`],
+    creator: "@radicalblind",
+  },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: `${pkg.url}/site.webmanifest`,
+}
 
 const RootLayout = async ({ children }: { children: ReactNode }) => {
   const session = await getServerSession(authOptions);

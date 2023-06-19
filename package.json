@@ -1,10 +1,16 @@
 {
-  "name": "hello-next",
+  "name": "chatgpt-prompt-hub",
+  "displayName": "ChatGPT Prompt Hub",
+  "url": "https://chatgptprompthub.vercel.app",
   "version": "1.0.0",
-  "description": "",
-  "keywords": [],
+  "description": "A community for ChatGPT prompts.",
+  "keywords": [
+    "ChatGPT",
+    "Prompt Engineering",
+    "Community"
+  ],
   "license": "MIT",
-  "author": "",
+  "author": "Allen Li",
   "scripts": {
     "dev": "next",
     "build": "npx prisma migrate deploy && next build",

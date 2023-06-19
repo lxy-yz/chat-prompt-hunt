@@ -2,7 +2,7 @@ import { getSession } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { SubmitChatForm } from "./submit-chat-form";
 
-const SubmitChat = async () => {
+const SubmitChatPage = async () => {
   const session = await getSession();
   if (!session) {
     return redirect('/api/auth/signin')
@@ -25,4 +25,4 @@ const SubmitChat = async () => {
   );
 };
 
-export default SubmitChat;
+export default SubmitChatPage;

@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation'
 import ChatPromptItem from "../chat-prompt-item";
 import { getSession } from "@/lib/auth";
 
-const ChatsPage = async () => {
+const SavedChatsPage = async () => {
   const session = await getSession();
   if (!session) {
     return redirect('/api/auth/signin')
@@ -34,7 +34,7 @@ const ChatsPage = async () => {
       <div className="h-full">
         <div className="mt-[80px] flex gap-4">
           <main className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {[...chats].map((chat, index) => {
+            {[...chats].map((chat) => {
               return (
                 <div key={chat.id} className="mx-auto max-w-[320px] w-full h-full">
                   <ChatPromptItem data={chat} />
@@ -48,4 +48,4 @@ const ChatsPage = async () => {
   );
 };
 
-export default ChatsPage;
+export default SavedChatsPage;

@@ -3,7 +3,7 @@ import prisma from '@/lib/prisma'
 import ChatPromptItem from "./chat-prompt-item";
 import { Comments } from "./comments";
 
-const Post = async ({ params }: {
+const ChatDetailsPage = async ({ params }: {
   params: {
     id: string
   }
@@ -35,4 +35,4 @@ const Post = async ({ params }: {
   );
 };
 
-export default Post;
+export default ChatDetailsPage;
