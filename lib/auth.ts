@@ -6,6 +6,9 @@ import prisma from '@/lib/prisma';
 import { NextAuthOptions } from 'next-auth';
 
 export const authOptions: NextAuthOptions = {
+  pages: {
+    signIn: '/login'
+  },
   providers: [
     // callbackUrl: `${process.env.NEXTAUTH_URL}/api/auth/callback/github`
     GitHubProvider({

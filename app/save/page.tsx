@@ -7,7 +7,7 @@ import { getSession } from "@/lib/auth";
 const SavedChatsPage = async () => {
   const session = await getSession();
   if (!session) {
-    return redirect('/api/auth/signin')
+    return redirect('/login')
   }
 
   const chats = await prisma.chatPrompt.findMany({

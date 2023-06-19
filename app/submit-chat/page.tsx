@@ -5,7 +5,7 @@ import { SubmitChatForm } from "./submit-chat-form";
 const SubmitChatPage = async () => {
   const session = await getSession();
   if (!session) {
-    return redirect('/api/auth/signin')
+    return redirect('/login')
   }
 
   return (

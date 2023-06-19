@@ -25,7 +25,7 @@ const ChatPromptItem = ({
 
   function redirectIfUnauthenticated() {
     if (!session) {
-      router.push("/api/auth/signin")
+      router.push("/login")
       return true
     }
     return false
