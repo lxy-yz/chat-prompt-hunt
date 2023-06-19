@@ -46,9 +46,7 @@ const Navbar: React.FC = () => {
             </Link>
           </div>
           <div className="navbar-center">
-            <button className="btn text-lg" onClick={() => toggle()}>
-              💡
-            </button>
+            
           </div>
           <div className="navbar-end flex-none">
             <ul className="menu menu-horizontal px-1">
