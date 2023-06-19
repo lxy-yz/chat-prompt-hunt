@@ -10,7 +10,7 @@ datasource db {
 model ChatPrompt {
   id            String    @id @default(cuid())
   title         String
-  slug          String    @unique
+  slug          String?   @unique
   url           String
   description   String
   topic         String[]
