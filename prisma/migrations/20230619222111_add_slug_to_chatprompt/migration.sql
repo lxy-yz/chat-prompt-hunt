@@ -9,7 +9,7 @@
 ALTER TABLE "Post" DROP CONSTRAINT "Post_authorId_fkey";
 
 -- AlterTable
-ALTER TABLE "chatprompts" ADD COLUMN     "slug" TEXT;
+ALTER TABLE "chatprompts" ADD COLUMN "slug" TEXT;
 
 -- DropTable
 DROP TABLE "Post";
