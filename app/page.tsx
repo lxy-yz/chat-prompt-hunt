@@ -27,7 +27,7 @@ export default async function Page() {
               <p className="mt-4 text-lg font-medium leading-8 text-gray-500">
                 Discover, curate and share ChatGPT prompts all in one place.
               </p>
-              <button className="my-8 btn btn-primary capitalize bg-indigo-600 text-white w-full max-w-xs h-16 hover:bg-indigo-700">
+              <button className="text-lg my-8 btn btn-primary capitalize bg-indigo-600 text-white w-full max-w-xs h-16 hover:bg-indigo-700">
                 <Link href="/discover">
                   Start Discovering
                 </Link>

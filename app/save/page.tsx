@@ -19,6 +19,7 @@ const SavedChatsPage = async () => {
       }
     },
     include: {
+      upvotedBy: true,
       submittedBy: {
         select: {
           name: true,
