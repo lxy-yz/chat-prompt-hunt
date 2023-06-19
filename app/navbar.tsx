@@ -4,7 +4,6 @@ import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
-import { useDarkMode } from "usehooks-ts";
 import { XMarkIcon, Bars3Icon } from "@heroicons/react/24/solid";
 
 const Navbar: React.FC = () => {
@@ -13,7 +12,6 @@ const Navbar: React.FC = () => {
 
   const { data: session } = useSession();
 
-  const { toggle } = useDarkMode();
   const [navbarOpen, setNavbarOpen] = React.useState(false)
 
   return (
