@@ -34,8 +34,6 @@ const ChatPromptItem = ({
   async function handleSave(id: string) {
     redirectIfUnauthenticated()
 
-    console.log('savedByUser', savedByUser);
-
     const url = !savedByUser ? `/api/chats/${id}/save` : `/api/chats/${id}/unsave`
     await fetch(url, {
       method: "POST",
