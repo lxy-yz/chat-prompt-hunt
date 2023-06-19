@@ -13,7 +13,7 @@ export const Sorting = () => {
     <div className="flex gap-4 items-center">
       <select
         ref={orderRef}
-        defaultValue={searchParams.get('sort') || 'recents'}
+        defaultValue={searchParams.get('sort') || ''}
         className="select select-bordered select-sm md:w-full max-w-xs"
         onChange={() => {
           if (!orderRef.current) return
@@ -22,7 +22,7 @@ export const Sorting = () => {
           router.push(`/discover?${newSearchParams}`)
         }}
       >
-        <option disabled>Sort by</option>
+        <option disabled value="">Sort by</option>
         <option value="recents">Recents</option>
         <option value="upvotes">Upvotes</option>
       </select>
