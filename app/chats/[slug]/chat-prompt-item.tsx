@@ -110,18 +110,20 @@ const ChatPromptItem = ({
                 <td>Upvotes</td>
                 <td className="flex justify-end">
                   <div className="avatar-group -space-x-6">
-                    {data.upvotedBy?.slice(0, 3).map(e => (
+                    {data.upvotedBy?.slice(0, 5).map(e => (
                       <div className="avatar">
                         <div className="w-12">
                           <img src={e.image} />
                         </div>
                       </div>
                     ))}
-                    <div className="avatar placeholder">
-                      <div className="w-12 bg-neutral-focus text-neutral-content">
-                        <span>3+</span>
+                    {data.upvotedBy && data.upvotedBy.length > 5 && (
+                      <div className="avatar placeholder">
+                        <div className="w-12 bg-neutral-focus text-neutral-content">
+                          <span>5+</span>
+                        </div>
                       </div>
-                    </div>
+                    )}
                   </div>
                 </td>
               </tr>
