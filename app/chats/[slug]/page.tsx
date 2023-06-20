@@ -25,7 +25,13 @@ const ChatDetailsPage = async ({ params }: {
     },
   });
 
-  if (!chat) return 'No chat found'
+  if (!chat) {
+    return (
+      <div className="pt-32 text-center">
+        Chat not found
+      </div>
+    )
+  }
 
   return (
     <div className="pt-20">
