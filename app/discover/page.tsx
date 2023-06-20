@@ -39,7 +39,7 @@ const DiscoverChatsPage = async ({
   return (
     <>
       <div className="pt-20">
-        <h1 className="text-center text-2xl md:text-5xl font-bold">Discover ChatGPT Prompts</h1>
+        <h1 className="text-center text-2xl md:text-5xl font-bold">Discover Prompts</h1>
         <div className="mt-10 text-xl text-gray-500">
           <form>
             <div className="form-control">

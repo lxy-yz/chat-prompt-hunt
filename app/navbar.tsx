@@ -32,22 +32,30 @@ const Navbar: React.FC = () => {
       <div className="hidden md:block">
         <div className="px-8 py-4 navbar flex-col md:flex-row bg-base-100">
           <div className="navbar-start flex-1 flex flex-col gap-2 md:flex-row md:gap-4">
-            <Link legacyBehavior href="/">
+            {/* <Link legacyBehavior href="/">
               <a className="btn" data-active={isActive("/")}>
                 🛖
               </a>
-            </Link>
-            <Link legacyBehavior href="/discover">
-              <a className="" data-active={isActive("/discover")}>
-                🔮 Discover
+            </Link> */}
+            <Link legacyBehavior href="/">
+              <a className="" data-active={isActive("/")}>
+                <img alt="🛖" src="/logo.png" className="w-16 h-16" />
               </a>
             </Link>
+            <span className="font-bold">ChatGPT Prompt Hub</span>
           </div>
           <div className="navbar-center">
 
           </div>
           <div className="navbar-end flex-none">
             <ul className="menu menu-horizontal px-1">
+              <li>
+                <Link legacyBehavior href="/discover">
+                  <a className="" data-active={isActive("/discover")}>
+                    🔮 Discover
+                  </a>
+                </Link>
+              </li>
               <li>
                 <Link legacyBehavior href="/submit-chat">
                   <a className="" data-active={isActive("/submit-chat")}>
@@ -97,38 +105,37 @@ const Navbar: React.FC = () => {
           </div>
         </div>
       </div>
-      {navbarOpen && (
-        <div className="py-6 font-semibold flex flex-col items-center gap-4 md:hidden">
-          {!session && (
+      {
+        navbarOpen && (
+          <div className="py-6 font-semibold flex flex-col items-center gap-4 md:hidden">
             <Link legacyBehavior href="/">
               <a className="" data-active={isActive("/")}>
-                🛖
-                <span className="inline-block ml-2">Home</span>
+                <div className="w-16 h-16 bg-[url('/logo.png')] bg-cover" />
               </a>
             </Link>
-          )}
-          <Link legacyBehavior href="/submit-chat">
-            <a className="" data-active={isActive("/submit-chat")}>
-              📝
-              <span className="inline-block ml-2">Submit</span>
-            </a>
-          </Link>
-          <Link legacyBehavior href="/discover">
-            <a className="" data-active={isActive("/discover")}>
-              🪐
-              <span className="inline-block ml-2">Discover</span>
-            </a>
-          </Link>
-          {session && (
-            <Link legacyBehavior href=''>
-              <a onClick={() => signOut()} data-active={isActive("/save")}>
-                🚪
-                Logout
+            <Link legacyBehavior href="/discover">
+              <a className="" data-active={isActive("/discover")}>
+                🪐
+                <span className="inline-block ml-2">Discover</span>
               </a>
             </Link>
-          )}
-        </div>
-      )}
+            <Link legacyBehavior href="/submit-chat">
+              <a className="" data-active={isActive("/submit-chat")}>
+                📝
+                <span className="inline-block ml-2">Submit</span>
+              </a>
+            </Link>
+            {session && (
+              <Link legacyBehavior href=''>
+                <a onClick={() => signOut()} data-active={isActive("/save")}>
+                  🚪
+                  Logout
+                </a>
+              </Link>
+            )}
+          </div>
+        )
+      }
     </>
 
   )

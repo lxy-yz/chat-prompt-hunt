@@ -22,7 +22,7 @@ export default async function Page() {
           <div className="px-6 py-10 mx-auto max-w-7xl lg:px-8">
             <div className="max-w-3xl mx-auto text-center lg:pt-8">
               <h1 className="capitalize mt-20 text-4xl font-bold tracking-tight  sm:text-6xl">
-                ChatGPT prompts hub
+                Find your next favorite ChatGPT prompt.
               </h1>
               <p className="mt-4 text-lg font-medium leading-8 text-gray-500">
                 Discover, curate and share ChatGPT prompts all in one place.
