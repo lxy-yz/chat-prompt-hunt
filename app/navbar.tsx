@@ -42,13 +42,13 @@ const Navbar: React.FC = () => {
                 <img alt="🛖" src="/logo.png" className="w-16 h-16" />
               </a>
             </Link>
-            <span className="font-bold">ChatGPT Prompt Hub</span>
+            <span className="text-sm font-bold">ChatGPT Prompt Hub</span>
           </div>
           <div className="navbar-center">
 
           </div>
           <div className="navbar-end flex-none">
-            <ul className="menu menu-horizontal px-1">
+            <ul className="flex-nowrap menu menu-horizontal px-1">
               <li>
                 <Link legacyBehavior href="/discover">
                   <a className="" data-active={isActive("/discover")}>
@@ -65,16 +65,6 @@ const Navbar: React.FC = () => {
               </li>
               {session && (
                 <li>
-                  <Link legacyBehavior href="/save">
-                    <a className="" data-active={isActive("/save")}>
-                      <span className="text-red-500">♥️</span>
-                      Saved
-                    </a>
-                  </Link>
-                </li>
-              )}
-              {session && (
-                <li>
                   <details>
                     <summary className="max-w-[150px] truncate">
                       📧 {session?.user.email}
@@ -89,6 +79,14 @@ const Navbar: React.FC = () => {
                           </Link>
                         </li> 
                       */}
+                      <li>
+                        <Link legacyBehavior href="/save">
+                          <a className="" data-active={isActive("/save")}>
+                            <span className="text-red-500">♥️</span>
+                            Saved
+                          </a>
+                        </Link>
+                      </li>
                       <li>
                         <Link legacyBehavior href=''>
                           <a onClick={() => signOut()} data-active={isActive("/save")}>
@@ -126,10 +124,18 @@ const Navbar: React.FC = () => {
               </a>
             </Link>
             {session && (
+              <Link legacyBehavior href="/save">
+                <a className="" data-active={isActive("/save")}>
+                  <span className="text-red-500">♥️</span>
+                  <span className="inline-block ml-2">Saved</span>
+                </a>
+              </Link>
+            )}
+            {session && (
               <Link legacyBehavior href=''>
                 <a onClick={() => signOut()} data-active={isActive("/save")}>
                   🚪
-                  Logout
+                  <span className="inline-block ml-2">Logout</span>
                 </a>
               </Link>
             )}
