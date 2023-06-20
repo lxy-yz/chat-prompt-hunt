@@ -35,7 +35,6 @@ const DiscoverChatsPage = async ({
       })
     }
   });
-  console.log('chats', chats);
 
   return (
     <>
