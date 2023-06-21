@@ -104,7 +104,23 @@ const ChatPromptItem = ({
               </tr>
               <tr>
                 <td>By</td>
-                <td className="text-right">{data.submittedBy?.name || 'N/A'}</td>
+                <td className="flex justify-end">
+                  {data.submittedBy?.image && (
+                    <details className="dropdown dropdown-top">
+                      <summary className="btn p-0">
+                        <div className="avatar">
+                          <div className="w-12 mask mask-squircle">
+                            <img src={data.submittedBy?.image} />
+                          </div>
+                        </div>
+                      </summary>
+                      <ul className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                        <li><a>Item 1</a></li>
+                        <li><a>Item 2</a></li>
+                      </ul>
+                    </details>
+                  )}
+                </td>
               </tr>
               <tr>
                 <td>Upvotes</td>
