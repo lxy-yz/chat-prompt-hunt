@@ -21,9 +21,27 @@ async function seedMissedSlugData() {
   }
 }
 
+async function seedMissedUsername() {
+  const users = await prisma.user.findMany({});
+  for (const user of users) {
+    if (!user.username) {
+      const username = user.email?.split('@')[0];
+      await prisma.user.update({
+        where: {
+          id: user.id
+        },
+        data: {
+          username
+        }
+      });
+    }
+  }
+}
+
 async function main() {
   console.log(`Start seeding ...`);
   await seedMissedSlugData();
+  await seedMissedUsername();
   console.log(`Seeding finished.`);
 }
 

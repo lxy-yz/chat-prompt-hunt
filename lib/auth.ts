@@ -4,6 +4,7 @@ import GitHubProvider from 'next-auth/providers/github';
 import GoogleProvider from 'next-auth/providers/google';
 import prisma from '@/lib/prisma';
 import { NextAuthOptions } from 'next-auth';
+import { redirect } from 'next/navigation';
 
 export const authOptions: NextAuthOptions = {
   pages: {
@@ -60,6 +61,14 @@ export const authOptions: NextAuthOptions = {
     }
   }
 };
+
+export async function useRedirectIfNotLoggedIn() {
+  const session = await getSession();
+  if (!session) {
+    return redirect('/login');
+  }
+  return session;
+}
 
 export const getSession = async () => {
   const session = await getServerSession(authOptions);

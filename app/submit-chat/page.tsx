@@ -1,12 +1,8 @@
-import { getSession } from "@/lib/auth";
-import { redirect } from "next/navigation";
+import { useRedirectIfNotLoggedIn } from "@/lib/auth";
 import { SubmitChatForm } from "./submit-chat-form";
 
 const SubmitChatPage = async () => {
-  const session = await getSession();
-  if (!session) {
-    return redirect('/login')
-  }
+  await useRedirectIfNotLoggedIn()
 
   return (
     <>

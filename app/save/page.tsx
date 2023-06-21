@@ -1,14 +1,10 @@
 import React from "react";
 import prisma from "@/lib/prisma";
-import { redirect } from 'next/navigation'
 import ChatPromptItem from "../chat-prompt-item";
-import { getSession } from "@/lib/auth";
+import { useRedirectIfNotLoggedIn } from "@/lib/auth";
 
 const SavedChatsPage = async () => {
-  const session = await getSession();
-  if (!session) {
-    return redirect('/login')
-  }
+  const session = await useRedirectIfNotLoggedIn()
 
   const chats = await prisma.chatPrompt.findMany({
     where: {

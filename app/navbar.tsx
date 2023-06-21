@@ -70,15 +70,14 @@ const Navbar: React.FC = () => {
                       📧 {session?.user.email}
                     </summary>
                     <ul className="w-full p-2 bg-base-100">
-                      {/* 
-                        <li>
-                          <Link legacyBehavior href="/profile">
-                            <a className="" data-active={isActive("/save")}>
-                              🦄 Profile
-                            </a>
-                          </Link>
-                        </li> 
-                      */}
+                      <li>
+                        <Link legacyBehavior href="/profile">
+                          <a className="" data-active={isActive("/profile")}>
+                            <span className="">🐱</span>
+                            <span className="inline-block ml-2">Profile</span>
+                          </a>
+                        </Link>
+                      </li>
                       <li>
                         <Link legacyBehavior href="/save">
                           <a className="" data-active={isActive("/save")}>
@@ -89,7 +88,7 @@ const Navbar: React.FC = () => {
                       </li>
                       <li>
                         <Link legacyBehavior href=''>
-                          <a onClick={() => signOut()} data-active={isActive("/save")}>
+                          <a onClick={() => signOut()} data-active={isActive("")}>
                             🚪
                             Logout
                           </a>
