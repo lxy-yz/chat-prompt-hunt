@@ -66,8 +66,12 @@ const Navbar: React.FC = () => {
               {session && (
                 <li>
                   <details>
-                    <summary className="max-w-[150px] truncate">
-                      📧 {session?.user.email}
+                    <summary className="">
+                      <div className="avatar">
+                        <div className="w-8 mask mask-squircle">
+                          <img src={session.user.image as string} />
+                        </div>
+                      </div>
                     </summary>
                     <ul className="w-full p-2 bg-base-100">
                       <li>
