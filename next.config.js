@@ -5,5 +5,14 @@ module.exports = {
     // your project has type errors.
     // !! WARN !!
     ignoreBuildErrors: true
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        port: ''
+      }
+    ]
   }
 };
