@@ -13,7 +13,8 @@
   "author": "Allen Li",
   "scripts": {
     "dev": "next",
-    "build": "prisma migrate deploy && next build",
+    "build": "npm run db && next build",
+    "db": "prisma migrate deploy && prisma generate && prisma db seed",
     "start": "next start",
     "db:up": "docker-compose up -d",
     "db:down": "docker-compose down"
