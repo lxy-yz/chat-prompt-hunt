@@ -2,11 +2,12 @@
 
 import { cn } from '@/lib/utils'
 import { Icon } from '@iconify/react'
+import Link from 'next/link'
 import { UserProfile } from "../../types"
 
 export default function UserCard({ data: user, popover }: { user: UserProfile, popover?: boolean }) {
   return (
-    <div className={cn("flex flex-col items-center", {
+    <div className={cn("flex flex-col gap-4 items-center", {
       "md:flex-row md:gap-8": !popover,
     })}>
       <div className="avatar">
@@ -17,9 +18,13 @@ export default function UserCard({ data: user, popover }: { user: UserProfile, p
           <img src={user.image} alt="" />
         </div>
       </div>
-      <div className="flex-1">
-        <div className="text-3xl text-semibold">{user.username}</div>
-        <div className="text-gray-500">{user.name}</div>
+      <div className={cn("flex-1 w-full", {
+        "text-center": popover,
+      })}>
+        <div className={cn("text-semibold", {
+          "text-3xl": !popover,
+        })}>{user.name}</div>
+        <div className="text-gray-500">@{user.username}</div>
         <div className="mt-4">{user.bio}</div>
         <div className="mt-4">
           {user.websites[0] && (
@@ -41,6 +46,15 @@ export default function UserCard({ data: user, popover }: { user: UserProfile, p
             </div>
           )}
         </div>
+        {popover && (
+          <div className="mt-4">
+            <Link legacyBehavior href={`/user/${user.username}`}>
+              <a className='btn w-full'>
+                Visit
+              </a>
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   )
