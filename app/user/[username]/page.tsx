@@ -55,7 +55,6 @@ export default async function UserPage({
             )}
           </div>
         </div>
-        {/* <UserForm data={profile} /> */}
       </div>
     </div>
   )

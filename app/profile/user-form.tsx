@@ -14,6 +14,9 @@ export default function UserForm({ data }: {
   const {
     handleSubmit,
     register,
+    getValues,
+    setError,
+    clearErrors,
     formState: { errors, },
   } = useForm<UserProfile>({
     defaultValues: {
@@ -75,7 +78,24 @@ export default function UserForm({ data }: {
             id="username"
             className="input input-bordered w-full"
             {...register("username", { required: true })}
+            onBlur={async () => {
+              const username = getValues('username')
+              const res = await fetch(`/api/profile/checkUsername`, {
+                method: 'POST',
+                body: JSON.stringify({ username })
+              })
+              if (!res.ok && res.status === 422) {
+                return setError('username', {
+                  type: 'manual',
+                  message: 'username already exists.'
+                })
+              }
+              clearErrors('username')
+            }}
           />
+          {errors.username?.type === 'manual' && (
+            <span className="self-end text-sm text-error">{errors.username.message}</span>
+          )}
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
