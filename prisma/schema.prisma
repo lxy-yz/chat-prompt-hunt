@@ -63,6 +63,7 @@ model User {
   email            String?      @unique
   emailVerified    DateTime?    @map("email_verified")
   image            String?
+  websites         String[]
   createdAt        DateTime     @default(now()) @map("created_at")
   updatedAt        DateTime     @updatedAt @map("updated_at")
   accounts         Account[]

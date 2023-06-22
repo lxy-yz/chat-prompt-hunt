@@ -17,9 +17,12 @@ const ChatDetailsPage = async ({ params }: {
       savedBy: { select: { email: true } },
       submittedBy: {
         select: {
+          username: true,
           name: true,
           email: true,
-          image: true
+          image: true,
+          bio: true,
+          websites: true,
         },
       },
     },

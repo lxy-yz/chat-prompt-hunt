@@ -12,7 +12,7 @@ export async function POST(req: Request) {
     }
 
     const body = await req.json();
-    const { username, bio, image } = body;
+    const { username, bio, image, websites } = body;
 
     let uploadedImage;
     if (image) {
@@ -27,6 +27,7 @@ export async function POST(req: Request) {
       data: {
         username,
         bio,
+        websites,
         image: uploadedImage
       }
     });

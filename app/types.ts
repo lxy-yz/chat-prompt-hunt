@@ -1,13 +1,11 @@
-export type Post = {
-  id: number;
-  title: string;
-  author: {
-    name: string;
-    email: string;
-  } | null;
-  content: string;
-  published: boolean;
-};
+export interface UserProfile {
+  name: string;
+  username: string;
+  email: string;
+  bio?: string;
+  image?: string;
+  websites?: string[];
+}
 
 export type ChatPrompt = {
   id: string;

@@ -8,6 +8,7 @@ import { ChatPrompt, User } from "../../types";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import { Placeholder } from "./placeholder";
+import UserCard from "@/app/user/[username]/user-card";
 
 const ChatPromptItem = ({
   data,
@@ -115,8 +116,7 @@ const ChatPromptItem = ({
                         </div>
                       </summary>
                       <ul className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                        <li><a>Item 1</a></li>
-                        <li><a>Item 2</a></li>
+                        <UserCard popover data={data.submittedBy} />
                       </ul>
                     </details>
                   )}
@@ -127,7 +127,7 @@ const ChatPromptItem = ({
                 <td className="flex justify-end">
                   <div className="avatar-group -space-x-6">
                     {data.upvotedBy?.slice(0, 5).map(e => (
-                      <div className="avatar">
+                      <div key={e.email} className="avatar">
                         <div className="w-12">
                           <img src={e.image} />
                         </div>

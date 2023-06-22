@@ -2,14 +2,7 @@
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-
-interface UserProfile {
-  name: string;
-  username: string;
-  email: string;
-  bio?: string
-  image?: FileList | null
-}
+import { UserProfile } from "../types";
 
 interface FormData extends Omit<UserProfile, 'image'> {
   image?: string | null
@@ -35,7 +28,7 @@ export default function UserForm({ data }: {
 
   return (
     <form
-      onSubmit={handleSubmit(async ({ username, bio, image }) => {
+      onSubmit={handleSubmit(async ({ username, bio, websites, image }) => {
         setIsSaving(true)
         const res = await fetch('/api/profile', {
           method: 'POST',
@@ -104,18 +97,50 @@ export default function UserForm({ data }: {
             {...register("bio", { required: false })}
           ></textarea>
         </div>
+        <div className="flex flex-col gap-2">
+          <label htmlFor="websites" className="block text-sm font-medium text-gray-700">Website links</label>
+          <input
+            type="url"
+            placeholder="e.g. https://yourawesome.website"
+            className="input input-bordered w-full"
+            {...register("websites.0", {
+              required: false,
+              pattern: /^https?:\/\//
+            })}
+          />
+          <input
+            type="url"
+            placeholder="e.g. https://twitter.com/username"
+            className="input input-bordered w-full"
+            {...register("websites.1", {
+              required: false,
+              pattern: /^https?:\/\/(www\.)?twitter\.com\/(#!\/)?[a-zA-Z0-9_]+$/i
+            })}
+          />
+          <input
+            type="url"
+            placeholder="e.g. https://linkedin.com/in/username"
+            className="input input-bordered w-full"
+            {...register("websites.2", {
+              required: false,
+              pattern: /^https?:\/\/(www\.)?linkedin\.com\/(#!\/)?[a-zA-Z0-9_]+$/i
+            })}
+          />
+        </div>
         <div>
           <button disabled={isSaving} type="submit" className="capitalize btn btn-primary">Save</button>
         </div>
       </div>
-      {toast && (
-        <div className="toast">
-          <div className="alert alert-info">
-            <span>{toast}</span>
+      {
+        toast && (
+          <div className="toast">
+            <div className="alert alert-info">
+              <span>{toast}</span>
+            </div>
           </div>
-        </div>
-      )}
-    </form>
+        )
+      }
+    </form >
   )
 }
 
