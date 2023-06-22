@@ -18,8 +18,8 @@ export default function UserCard({ data: user, popover }: { user: UserProfile, p
           <img src={user.image} alt="" />
         </div>
       </div>
-      <div className={cn("flex-1 w-full", {
-        "text-center": popover,
+      <div className={cn("flex-1 w-full text-center", {
+        "md:text-left": !popover,
       })}>
         <div className={cn("text-semibold", {
           "text-3xl": !popover,

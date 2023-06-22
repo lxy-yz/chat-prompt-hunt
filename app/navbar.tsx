@@ -77,7 +77,7 @@ const Navbar: React.FC = () => {
                       <li>
                         <Link legacyBehavior href="/profile">
                           <a className="" data-active={isActive("/profile")}>
-                            <span className="">🐱</span>
+                            <span className="">😺</span>
                             <span className="inline-block ml-2">Profile</span>
                           </a>
                         </Link>
@@ -127,6 +127,14 @@ const Navbar: React.FC = () => {
               </a>
             </Link>
             {session && (
+              <Link legacyBehavior href="/profile">
+                <a className="" data-active={isActive("/profile")}>
+                  <span className="">😺</span>
+                  <span className="inline-block ml-2">Profile</span>
+                </a>
+              </Link>
+            )}
+            {session && (
               <Link legacyBehavior href="/save">
                 <a className="" data-active={isActive("/save")}>
                   <span className="text-red-500">♥️</span>
@@ -136,7 +144,7 @@ const Navbar: React.FC = () => {
             )}
             {session && (
               <Link legacyBehavior href=''>
-                <a onClick={() => signOut()} data-active={isActive("/save")}>
+                <a onClick={() => signOut()} data-active={isActive("/")}>
                   🚪
                   <span className="inline-block ml-2">Logout</span>
                 </a>

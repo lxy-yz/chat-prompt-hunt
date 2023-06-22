@@ -107,11 +107,11 @@ const ChatPromptItem = ({
                 <td>By</td>
                 <td className="flex justify-end">
                   {data.submittedBy?.image && (
-                    <details className="dropdown dropdown-top">
+                    <details className="dropdown dropdown-top dropdown-end">
                       <summary className="btn">
                         {data.submittedBy?.name}
                       </summary>
-                      <ul className="dropdown-content z-[1] menu p-6 shadow bg-base-100 rounded-box w-52">
+                      <ul className="dropdown-content z-[1] menu p-6 shadow bg-base-100 rounded-box w-[288px] overflow-auto">
                         <UserCard popover data={data.submittedBy} />
                       </ul>
                     </details>
