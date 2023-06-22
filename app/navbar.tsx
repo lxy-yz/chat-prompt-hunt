@@ -65,15 +65,15 @@ const Navbar: React.FC = () => {
               </li>
               {session && (
                 <li>
-                  <details>
-                    <summary className="">
+                  <details className="dropdown dropdown-bottom dropdown-end">
+                    <summary>
                       <div className="avatar">
                         <div className="w-8 mask mask-squircle">
                           <img src={session.user.image as string} />
                         </div>
                       </div>
                     </summary>
-                    <ul className="w-full p-2 bg-base-100">
+                    <ul className="dropdown-content bg-base-100">
                       <li>
                         <Link legacyBehavior href="/profile">
                           <a className="" data-active={isActive("/profile")}>
@@ -86,15 +86,14 @@ const Navbar: React.FC = () => {
                         <Link legacyBehavior href="/save">
                           <a className="" data-active={isActive("/save")}>
                             <span className="text-red-500">♥️</span>
-                            Saved
-                          </a>
+                            <span className="inline-block ml-2">Saved</span>                          </a>
                         </Link>
                       </li>
                       <li>
                         <Link legacyBehavior href=''>
                           <a onClick={() => signOut()} data-active={isActive("")}>
                             🚪
-                            Logout
+                            <span className="inline-block ml-2">Logout</span>
                           </a>
                         </Link>
                       </li>
