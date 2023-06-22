@@ -38,6 +38,7 @@ export default function UserForm({ data }: {
           body: JSON.stringify({
             username,
             bio,
+            websites,
             image: image && await fileToBase64(image[0] as File)
           })
         })
