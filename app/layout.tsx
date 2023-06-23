@@ -5,7 +5,7 @@ import SessionProvider from './session-provider';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/lib/auth';
 
-import { ThemeProvider } from './toggle-theme';
+import { ThemeProvider } from './theme-provider';
 import Navbar from './navbar';
 import Footer from './footer';
 
