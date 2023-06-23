@@ -3,8 +3,10 @@
 import React from "react";
 import { InboxIcon, GlobeAltIcon, } from '@heroicons/react/24/solid'
 import { useDarkMode } from "usehooks-ts";
+import { usePathname } from "next/navigation";
 
 const Footer: React.FC = () => {
+  const pathname = usePathname()
   const { toggle } = useDarkMode();
 
   return (
@@ -13,6 +15,13 @@ const Footer: React.FC = () => {
         <button className="btn text-lg" onClick={() => toggle()}>
           🌓
         </button>
+        {pathname === '/' && (
+          <div className="mt-4">
+            <a href="https://www.producthunt.com/posts/chatgpt-prompt-hub?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-chatgpt&#0045;prompt&#0045;hub" target="_blank">
+              <img src={`https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=400925&theme=neutral`} alt="ChatGPT&#0032;Prompt&#0032;Hub - Discover&#0044;&#0032;curate&#0032;and&#0032;share&#0032;ChatGPT&#0032;prompts&#0032;all&#0032;in&#0032;one&#0032;place | Product Hunt" width="250" height="54" />
+            </a>
+          </div>
+        )}
         <p className="mt-4 text-zinc-500">
           Copyright © {new Date().getFullYear()} - All right reserved
         </p>
