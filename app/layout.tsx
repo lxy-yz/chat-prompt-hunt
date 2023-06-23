@@ -5,7 +5,7 @@ import SessionProvider from './session-provider';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/lib/auth';
 
-import { ToggleTheme } from './toggle-theme';
+import { ThemeProvider } from './toggle-theme';
 import Navbar from './navbar';
 import Footer from './footer';
 
@@ -59,13 +59,13 @@ const RootLayout = async ({ children }: { children: ReactNode }) => {
     <html lang="en">
       <body className="">
         <SessionProvider session={session}>
-          <ToggleTheme>
+          <ThemeProvider>
             <Navbar />
             <div className="px-4 lg:max-w-screen-lg mx-auto">
               {children}
             </div>
             <Footer />
-          </ToggleTheme>
+          </ThemeProvider>
         </SessionProvider>
         <Analytics />
       </body>

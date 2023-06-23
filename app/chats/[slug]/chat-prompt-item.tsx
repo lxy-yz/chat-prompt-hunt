@@ -124,7 +124,7 @@ const ChatPromptItem = ({
                   <div style={{ overflow: 'visible' }} className="avatar-group -space-x-6">
                     {data.upvotedBy?.slice(0, 5).map(e => {
                       return (
-                        <div className="dropdown dropdown-hover dropdown-bottom dropdown-end">
+                        <div key={e.email} className="dropdown dropdown-hover dropdown-bottom dropdown-end">
                           <div tabIndex={0} key={e.email} className="avatar">
                             <div className="w-12 cursor-pointer">
                               <img src={e.image} />

@@ -1,6 +1,5 @@
 // https://giscus.app/
 // <script src="https://giscus.app/client.js"
-//         data-repo="lxy-yz/chat-prompt-hunt"
 //         data-repo-id="R_kgDOJwDyIw"
 //         data-category="General"
 //         data-category-id="DIC_kwDOJwDyI84CXSpZ"
@@ -18,23 +17,25 @@
 'use client'
 
 import Giscus from '@giscus/react';
+import { useDarkMode } from 'usehooks-ts';
 
 export const Comments = () => {
+  const { isDarkMode } = useDarkMode();
+
   // TODO: customize
   // https://github.com/giscus/giscus-component#changing-the-iframe-styles
   return (
     <Giscus
       id="comments"
-      repo="lxy-yz/chat-prompt-hunt"
+      repo="lxy-yz/chatgpt-prompts-hub"
       repoId="R_kgDOJwDyIw"
       category="General"
       categoryId="DIC_kwDOJwDyI84CXSpZ"
       mapping="pathname"
-      term="Welcome to @giscus/react component!"
       reactionsEnabled="1"
       emitMetadata="0"
       inputPosition="bottom"
-      theme="light"
+      theme={isDarkMode ? 'dark' : 'light'}
       lang="en"
       loading="lazy"
     />
