@@ -13,7 +13,7 @@ const ChatDetailsPage = async ({ params }: {
       slug: params.slug,
     },
     include: {
-      upvotedBy: { select: { email: true, image: true } },
+      upvotedBy: true,
       savedBy: { select: { email: true } },
       submittedBy: {
         select: {

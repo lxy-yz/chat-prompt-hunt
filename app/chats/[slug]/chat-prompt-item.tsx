@@ -107,28 +107,35 @@ const ChatPromptItem = ({
                 <td>By</td>
                 <td className="flex justify-end">
                   {data.submittedBy?.image && (
-                    <details className="dropdown dropdown-top dropdown-end">
-                      <summary className="btn">
+                    <div className="dropdown dropdown-hover	dropdown-top dropdown-end">
+                      <label tabIndex={0} className="link">
                         {data.submittedBy?.name}
-                      </summary>
-                      <ul className="dropdown-content z-[1] menu p-6 shadow bg-base-100 rounded-box w-[288px] overflow-auto">
+                      </label>
+                      <div tabIndex={0} className="dropdown-content z-[1] menu p-6 shadow bg-base-100 rounded-box w-[288px] overflow-auto">
                         <UserCard popover data={data.submittedBy} />
-                      </ul>
-                    </details>
+                      </div>
+                    </div>
                   )}
                 </td>
               </tr>
               <tr>
                 <td>Upvotes</td>
                 <td className="flex justify-end">
-                  <div className="avatar-group -space-x-6">
-                    {data.upvotedBy?.slice(0, 5).map(e => (
-                      <div key={e.email} className="avatar">
-                        <div className="w-12">
-                          <img src={e.image} />
+                  <div style={{ overflow: 'visible' }} className="avatar-group -space-x-6">
+                    {data.upvotedBy?.slice(0, 5).map(e => {
+                      return (
+                        <div className="dropdown dropdown-hover dropdown-bottom dropdown-end">
+                          <div tabIndex={0} key={e.email} className="avatar">
+                            <div className="w-12 cursor-pointer">
+                              <img src={e.image} />
+                            </div>
+                          </div>
+                          <div tabIndex={0} className="dropdown-content z-[1] menu p-6 shadow bg-base-100 rounded-box w-[288px] overflow-auto">
+                            <UserCard popover data={e} />
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      )
+                    })}
                     {data.upvotedBy && data.upvotedBy.length > 5 && (
                       <div className="avatar placeholder">
                         <div className="w-12 bg-neutral-focus text-neutral-content">
