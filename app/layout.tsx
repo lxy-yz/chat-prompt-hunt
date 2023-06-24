@@ -67,7 +67,9 @@ const RootLayout = async ({ children }: { children: ReactNode }) => {
             <Footer />
           </ThemeProvider>
         </SessionProvider>
+
         <Analytics />
+        <script defer data-domain="chatgptprompthub.vercel.app" src="https://plausible.liallen.me/js/script.js"></script>
       </body>
     </html>
   );
