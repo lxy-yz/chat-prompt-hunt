@@ -4,11 +4,13 @@ import { useState } from "react";
 import { ChevronLeftIcon } from '@heroicons/react/24/solid'
 import { StarIcon, HandThumbUpIcon } from '@heroicons/react/24/outline'
 import { useSession } from "next-auth/react"
-import { ChatPrompt, User } from "../../types";
+import { ChatPrompt } from "../../types";
 import { cn } from "@/lib/utils";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Placeholder } from "./placeholder";
 import UserCard from "@/app/user/[username]/user-card";
+import { Icon } from "@iconify/react";
+import Link from "next/link";
 
 const ChatPromptItem = ({
   data,
@@ -22,7 +24,10 @@ const ChatPromptItem = ({
   const savedByUser = data.savedBy?.map(e => e.email).includes(session?.user?.email as string)
   const upvotedByUser = data.upvotedBy?.map(e => e.email).includes(session?.user?.email as string)
 
+  const canEdit = session?.user && belongsToUser
+
   const router = useRouter()
+  const pathname = usePathname()
 
   function redirectIfUnauthenticated() {
     if (!session) {
@@ -85,7 +90,14 @@ const ChatPromptItem = ({
         </div>
         <div className="divider md:divider-horizontal order-2"></div>
         <div className="flex-1 min-w-[312px] order-1">
-          <h2 className="capitalize font-bold text-5xl">{data.title}</h2>
+          <h2 className="capitalize font-bold text-5xl">
+            {data.title}
+            {canEdit && (
+              <Link legacyBehavior href={`${pathname}/edit`}>
+                <Icon icon="iconamoon:edit" className="cursor-pointer inline ml-2 h-5 w-5" />
+              </Link>
+            )}
+          </h2>
           <p className="mt-12">{data.description}</p>
           <table className="mt-12 table table-xs">
             <tbody>
@@ -167,7 +179,7 @@ const ChatPromptItem = ({
               {'Upvote ' + data.upvotedBy?.length ?? 0}
               <HandThumbUpIcon className="w-4 h-4" />
             </button>
-            {session && belongsToUser && (
+            {canEdit && (
               <button
                 className="btn btn-outline btn-error capitalize"
                 onClick={() => handleDelete(data.id)}

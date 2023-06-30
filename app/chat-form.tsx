@@ -3,14 +3,14 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-import { ChatPrompt } from "../types";
+import { ChatPrompt } from "./types";
 import Picker from "@emoji-mart/react";
 import pickerData from '@emoji-mart/data'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 
 const URL_PATTERN = /^(https?:\/\/)?chat\.openai\.com\/share\/(.*)$/i;
 
-export const SubmitChatForm = ({ data }: { data?: ChatPrompt }) => {
+export const ChatForm = ({ data }: { data?: ChatPrompt | null }) => {
   const router = useRouter()
 
   const {
@@ -20,6 +20,8 @@ export const SubmitChatForm = ({ data }: { data?: ChatPrompt }) => {
   } = useForm<ChatPrompt>({
     defaultValues: {
       title: data?.title || "",
+      url: data?.url || "",
+      description: data?.description || "",
     },
   })
 
@@ -52,7 +54,7 @@ export const SubmitChatForm = ({ data }: { data?: ChatPrompt }) => {
     router.push(`/chats/${chat.slug}`)
   }
 
-  const [emojis, setEmojis] = useState(['🤖'])
+  const [emojis, setEmojis] = useState(data?.topic || ['🤖'])
 
   return (
     <div className="max-w-lg mx-auto">
