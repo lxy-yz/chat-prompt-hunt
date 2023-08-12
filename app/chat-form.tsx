@@ -58,7 +58,7 @@ export const ChatForm = ({ data }: { data?: ChatPrompt | null }) => {
 
   return (
     <div className="max-w-lg mx-auto">
-      <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+      <form className="space-y-6 plausible-event-name=Submit+Chat" onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col gap-2">
           <label htmlFor="topic" className="block text-sm font-medium text-gray-700">Topic</label>
           <div className="dropdown">
