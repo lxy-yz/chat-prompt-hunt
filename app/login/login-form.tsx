@@ -9,14 +9,14 @@ export default function LoginForm() {
       <div className="flex w-full flex-col gap-2 p-8">
         <button
           onClick={() => signIn('google')}
-          className="btn"
+          className="btn plausible-event-name=Signup+Google"
         >
           <Icon icon="flat-color-icons:google" className="mr-4 h-5 w-5" />
           Sign In with Google
         </button>
         <button
           onClick={() => signIn('github')}
-          className="btn"
+          className="btn plausible-event-name=Signup+GitHub"
         >
           <Icon icon="mdi:github" className="mr-4 h-5 w-5" />
           Sign In with Github
