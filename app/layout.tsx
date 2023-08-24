@@ -61,7 +61,7 @@ const RootLayout = async ({ children }: { children: ReactNode }) => {
         <SessionProvider session={session}>
           <ThemeProvider>
             <Navbar />
-            <div className="px-4 lg:max-w-screen-lg mx-auto">
+            <div className="px-4 min-h-screen lg:max-w-screen-lg mx-auto">
               {children}
             </div>
             <Footer />

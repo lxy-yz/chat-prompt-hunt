@@ -21,7 +21,7 @@ const EditChatPage = async ({ params }: { params: { slug: string } }) => {
           We’ll need chat url, title and a short description
         </div>
         <div className="mt-10">
-          <ChatForm data={chat} />
+          <ChatForm edit data={chat} />
         </div>
       </div>
     </>

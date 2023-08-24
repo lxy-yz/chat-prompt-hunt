@@ -10,7 +10,7 @@ import { XMarkIcon } from '@heroicons/react/24/outline'
 
 const URL_PATTERN = /^(https?:\/\/)?chat\.openai\.com\/share\/(.*)$/i;
 
-export const ChatForm = ({ data }: { data?: ChatPrompt | null }) => {
+export const ChatForm = ({ data, edit }: { data?: ChatPrompt | null, edit?: boolean }) => {
   const router = useRouter()
 
   const {
@@ -28,18 +28,18 @@ export const ChatForm = ({ data }: { data?: ChatPrompt | null }) => {
   const [isSaving, setIsSaving] = useState(false)
   const [toast, setToast] = useState('')
 
-  async function onSubmit(data: ChatPrompt) {
+  async function onSubmit(formData: ChatPrompt) {
     setToast('')
     setIsSaving(true)
-    const response = await fetch(`/api/chats`, {
-      method: "POST",
+    const response = await fetch(edit ? `/api/chats/${data!.id}` : `/api/chats`, {
+      method: edit ? "PATCH" : "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        title: data.title,
-        description: data.description,
-        url: data.url,
+        title: formData.title,
+        description: formData.description,
+        url: formData.url,
         topic: emojis // data.topic,
       }),
     })
