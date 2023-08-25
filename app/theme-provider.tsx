@@ -10,7 +10,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     const daisyui = document.getElementById('daisyui-theme');
     if (daisyui) {
-      daisyui.setAttribute('data-theme', theme);
+      daisyui.setAttribute('data-theme', "black");
     }
   }, [theme]);
 
