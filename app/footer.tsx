@@ -12,9 +12,6 @@ const Footer: React.FC = () => {
   return (
     <footer className="mt-10 footer footer-center p-10 bg-primary text-primary-content">
       <div>
-        <button className="btn text-lg" onClick={() => toggle()}>
-          🌓
-        </button>
         {pathname === '/' && (
           <div className="mt-4">
             <a href="https://www.producthunt.com/posts/chatgpt-prompt-hub?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-chatgpt&#0045;prompt&#0045;hub" target="_blank">
