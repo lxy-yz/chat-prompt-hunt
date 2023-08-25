@@ -15,7 +15,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   }, [theme]);
 
   return (
-    <div className="min-h-screen" id="daisyui-theme">
+    <div className="min-h-screen" id="daisyui-theme" data-theme="black">
       {children}
     </div>
   );
