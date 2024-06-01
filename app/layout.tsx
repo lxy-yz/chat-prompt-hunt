@@ -69,7 +69,7 @@ const RootLayout = async ({ children }: { children: ReactNode }) => {
         </SessionProvider>
 
         <Analytics />
-        <script defer data-domain="chatgptprompthub.vercel.app" src="https://plausible.liallen.me/js/script.tagged-events.js"></script>
+        <script defer data-domain="chatprompthub.vercel.app" src="https://plausible.liallen.me/js/script.tagged-events.js"></script>
       </body>
     </html>
   );
